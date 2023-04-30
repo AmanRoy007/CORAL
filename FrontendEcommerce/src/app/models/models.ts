@@ -1,5 +1,5 @@
 export interface LoginFormData{
-    username:string,
+    email:string,
     password:string,
 }
 
@@ -10,4 +10,8 @@ export interface registerFormModel{
     email:string,
     password:string,
     
+}
+
+export interface loginResponse{
+email:string, isLogedIn:Boolean
 }
