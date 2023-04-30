@@ -19,12 +19,26 @@ app.get("/", function (req, res) {
 
 //Post request for login user;
 app.post("/login", function (request, response) {
-  console.log(request.body.username);
-  let username = request.body.username;
+  console.log(request.body.email);
+  let email = request.body.email;
   let password = request.body.password;
-  if (!username && !password) return;
-  let result = buildConnection();
-  if (!result) return;
+  if (!email && !password) return;
+  buildConnection().then((resolve) => {
+    let query = { email: email, securityKey: password };
+    findExistingUser(query).then((resolve) => {
+      if (resolve.length > 0) {
+        response.status(200).json({ email: email, isLogedIn: true });
+      } else {
+        response
+          .status(201)
+          .json({
+            email: email,
+            isLogedIn: false,
+            errorMsg: "Check your email and password",
+          });
+      }
+    });
+  });
 });
 
 // POST request for register user
@@ -37,23 +51,28 @@ app.post("/register", function (request, response) {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password,
+      securityKey: password,
     };
     let query = { email: email };
     findExistingUser(query).then((resolve) => {
       if (resolve.length > 0) {
-        response.status(201).json({ message: "User already registered" });
+        response
+          .status(201)
+          .json({ message: "User already registered", isExistingUser: true });
       } else {
         registerUserData(payload)
           .then((resolve) => {
-            response
-              .status(200)
-              .json({ message: "User Registered Successfully" });
+            response.status(200).json({
+              message: "User Registered Successfully",
+              isRegisterd: true,
+            });
           })
           .catch((error) => {
-            response
-              .status(200)
-              .json({ message: "Not able to Register User", error: error });
+            response.status(501).json({
+              message: "Not able to Register User",
+              error: error,
+              isRegisterd: false,
+            });
           });
       }
     });
