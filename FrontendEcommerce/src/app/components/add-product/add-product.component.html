@@ -1,0 +1,50 @@
+<div class="addProduct-Container">
+  <div class="addProduct-Form">
+    <form [formGroup]="addProductForm" enctype="multipart/form-data">
+      <div class="left-form-control">
+        <mat-form-field class="example-full-width">
+          <mat-label>Product Name</mat-label>
+          <input
+            matInput
+            placeholder=""
+            value=""
+            formControlName="productName"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Product Price</mat-label>
+          <input
+            matInput
+            placeholder=""
+            value=""
+            formControlName="productPrice"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            placeholder=""
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
+
+        <div class="file-upload-control">
+          <input
+            type="file"
+            name=""
+            id=""
+            formControlName="fileUpload"
+            (change)="getFilesData($event)"
+          />
+        </div>
+      </div>
+      <div class="right-image-preview" *ngIf="url">
+        <img [src]="url" alt="product-img" class="product-img" />
+      </div>
+    </form>
+    <button mat-raised-button color="primary" (click)="getFormData()">
+      Add Product
+    </button>
+  </div>
+</div>
