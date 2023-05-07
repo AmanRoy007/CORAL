@@ -1,0 +1,53 @@
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo-wrp">
+                <a href="javascript:void(0)" class="logo-link">Logo</a>
+            </div>
+
+            <div class="navbar-cnt">
+
+                <div class="search-wrp">
+                    <input type="text" placeholder="search for products, brands and more">
+                </div>
+
+                <div class="main-cnt">
+                    <div class="main-cnt-menu">
+                        <div class="main-menu-wrp">
+                            <a href="javascript:void(0)" class="main-menu-links">Become a seller</a>
+                        </div>
+
+                        <div class="main-menu-wrp">
+                            <button mat-button [matMenuTriggerFor]="menu" class="more-menu">More
+                                <mat-icon><span class="material-symbols-outlined">expand_more</span></mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item> Notification</button>
+                                <button mat-menu-item>24 x 7 Support</button>
+                            </mat-menu>
+                        </div>
+
+                        <div class="main-menu-wrp">
+                            <a href="javascript:void(0)" class="cart-link"><mat-icon>shopping_cart</mat-icon> Cart </a>
+                        </div>
+                    </div>
+
+                    <div class="user-account">
+                        <button mat-raised-button class="user-account-btn" [matMenuTriggerFor]="account">
+                            <mat-icon>
+                                <span class="material-symbols-outlined">account_circle</span>
+                            </mat-icon>
+                        </button>
+
+                        <mat-menu #account="matMenu">
+                            <button mat-menu-item>My Account</button>
+                            <button mat-menu-item>Logout</button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+
+
+        </nav>
+    </div>
+</header>
