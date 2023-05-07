@@ -9,16 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginGuardGuard } from './guards/login-guard.guard';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent,HeaderComponent,FooterComponent,ProductCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HeaderComponent,
-    FooterComponent,.
   ],
   providers: [LoginGuardGuard],
   bootstrap: [AppComponent],
