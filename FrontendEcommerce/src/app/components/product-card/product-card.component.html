@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="card-wrap">
+            <span matBadge="sale" matBadgeOverlap="false" class="badge">Sale</span>
+            <div class="card-img">
+                <!-- <img src="https://new-ella-demo.myshopify.com/cdn/shop/products/product-tivi-1_ad5097e1-ea23-4ccf-b4a5-dc2c9b4f35f1_870x.jpg?v=1640334208"
+                    alt="card-image"> -->
+                <div class="image"></div>
+            </div>
+            <div class="card-cnt">
+                <p>(Product 16) Sample - Computers & Accessories For Sale</p>
+                <div class="rating">
+                    <mat-icon class="active"><span class="material-symbols-outlined">star</span></mat-icon>
+                    <mat-icon class="active"><span class="material-symbols-outlined">star</span></mat-icon>
+                    <mat-icon><span class="material-symbols-outlined">star</span></mat-icon>
+                    <mat-icon><span class="material-symbols-outlined">star</span></mat-icon>
+                </div>
+
+                <div class="card-main">
+                    <p class="card-price"><del>&#36;96 </del><strong> &#36;80</strong> </p>
+                    <button type="button" class="fav-btn" (click)="isSelectedFavIcon()"><mat-icon class="fav-icon" [ngClass]="{'active':isSelected}">favorite</mat-icon></button>
+                </div>
+
+                <div class="cart-wrp">
+                    <button mat-stroked-button class="card-wrap-btn">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

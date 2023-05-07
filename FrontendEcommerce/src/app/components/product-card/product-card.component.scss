@@ -1,0 +1,108 @@
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 33.33%;
+
+    .card-wrap {
+      border-radius: 8px;
+      background-color: #fff;
+      padding: 20px;
+      position: relative;
+
+      .badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 25px;
+        border-radius: 4px;
+        margin-top: 8px;
+        background-color: rgba(103, 58, 183, 0.2);
+        color: #673ab7;
+      }
+
+      .card-img {
+        .image {
+          width: 140px;
+          margin: 15px auto;
+          height: 140px;
+          background-color: red;
+
+          &:hover {
+            background-color: yellow;
+          }
+        }
+      }
+
+      .card-cnt {
+        p {
+          margin-top: 20px;
+          font-size: 16px;
+        }
+
+        .rating {
+          mat-icon {
+            font-size: 18px;
+            color: #ddd;
+
+            &.active {
+              color: #f8c646;
+            }
+          }
+        }
+
+        .card-main {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .card-price {
+            font-size: 18px;
+
+            del{
+              font-size: 16px;
+            }
+            strong {
+              margin-left: 6px;
+              color: #673ab7;
+            }
+          }
+
+          .fav-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            .fav-icon {
+              color: #ddd;
+
+              &.active {
+                color: #673ab7;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .cart-wrp {
+      .card-wrap-btn {
+        margin-top: 10px;
+        width: 100%;
+        padding: 2px;
+
+        &:hover {
+          background-color: #673ab7;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
