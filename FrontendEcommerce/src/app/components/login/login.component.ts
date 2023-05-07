@@ -10,12 +10,16 @@ export class LoginComponent implements OnInit {
   isLogined: boolean = true;
   isCreateAccount: boolean = false;
   isForgotPassword: boolean = false;
-  isRegister!: FormGroup;
   isSubmitted: boolean = false;
   submitFormLogin: boolean = false;
-  isLoginedForm!: FormGroup;
+  isForgotSubmitForm:boolean = false
   visibilityIcon: string = 'visibility_off';
   checkText: boolean = false;
+  successMessage:any;
+  isRegister!: FormGroup;
+  isLoginedForm!: FormGroup;
+  isForgot!:FormGroup;
+
 
   constructor(private formBuider: FormBuilder) { }
 
@@ -47,7 +51,11 @@ export class LoginComponent implements OnInit {
 
     this.isLoginedForm = this.formBuider.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9._%+-]+@(outlook|gmail|yahoo)\.com')]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)] ]
+    })
+
+    this.isForgot = this.formBuider.group({
+      email:['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9._%+-]+@(outlook|gmail|yahoo)\.com')]]
     })
 
   }
@@ -65,17 +73,17 @@ export class LoginComponent implements OnInit {
 
   submitFormLoginData() {
     this.submitFormLogin = true;
-    if (this.isLoginedForm.invalid) {
-      return
-    }
+    if (this.isLoginedForm.invalid) return
   }
 
 
   submitFormData() {
     this.isSubmitted = true;
-    if (this.isRegister.invalid) {
-      return
-    }
+    if (this.isRegister.invalid)  return
+  }
 
+  ForgotPass(){
+    this.isForgotSubmitForm = true;
+    if(this.isForgot.invalid) return
   }
 }
