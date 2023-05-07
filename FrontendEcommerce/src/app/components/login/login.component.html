@@ -143,25 +143,33 @@
 
 
 <ng-template [ngIf]="isForgotPassword">
-  <form>
+  <form [formGroup]="isForgot" (ngSubmit)="ForgotPass()">
     <div class="forgot-pass-wrp">
-        <h2>Forgot Password</h2>
-        <p>No worries, we'll send you reset instructions</p>
+      <h2>Forgot Password</h2>
+      <p>No worries, we'll send you reset instructions</p>
+  
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
 
-        <div class="form-controls">
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email">
-            </mat-form-field>
-        </div>
-
-        <div class="login-btn-wrp">
-            <button mat-raised-button color="primary">Send Reset Link</button>
-        </div>
-
-        <p class="not-account">Already Have an Account? <a href="javascript:void(0)" class="sign-up-link"
-            (click)="Login()">Log in</a>
-    </p>
+        <span
+          *ngIf="!isForgot.get('email')?.hasError('pattern') && isForgot.get('email')?.invalid && (isForgot.get('email')?.dirty || isForgot.get('email')?.touched)"
+          class="error-mssge">* Email is <strong>Required</strong></span>
+        <span *ngIf="isForgotSubmitForm && !(isForgot.get('email')?.dirty || isForgot.get('email')?.touched)"
+          class="error-mssge">Email Name cannot be blank</span>
+        <span *ngIf="isForgotSubmitForm && isForgot.get('email')?.hasError('pattern')" class="error-mssge">Please
+          enter a valid Email Address</span>
+      </div>
+  
+      <div class="login-btn-wrp">
+        <button mat-raised-button color="primary">Send Reset Link</button>
+      </div>
+  
+      <p class="not-account">Already Have an Account? <a href="javascript:void(0)" class="sign-up-link"
+          (click)="Login()">Log in</a>
+      </p>
     </div>
   </form>
 </ng-template>
