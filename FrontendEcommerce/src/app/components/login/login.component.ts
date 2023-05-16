@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   isSubmitted: boolean = false;
   submitFormLogin: boolean = false;
   isForgotSubmitForm:boolean = false
-  visibilityIcon: string = 'visibility_off';
+  visibilityIcon: boolean = true;
   checkText: boolean = false;
   successMessage:any;
   isRegister!: FormGroup;
@@ -61,14 +61,8 @@ export class LoginComponent implements OnInit {
   }
 
   toggle() {
-    if (this.visibilityIcon == 'visibility_off') {
-      this.visibilityIcon = 'visibility';
-      this.checkText = true;
-    }
-    else {
-      this.checkText = false;
-      this.visibilityIcon = 'visibility_off'
-    }
+    this.visibilityIcon = !this.visibilityIcon;
+    this.checkText = !this.checkText;
   }
 
   submitFormLoginData() {
