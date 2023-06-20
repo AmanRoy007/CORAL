@@ -1,0 +1,200 @@
+.product-page-section {
+  .product-features-card {
+    display: flex;
+    padding-top: 40px;
+    margin-top: 40px;
+  }
+
+  .product-image-gallery,
+  .product-buy-form {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .product-image-gallery {
+    padding-right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .product-image {
+      width: 100%;
+      max-width: 587px;
+    }
+  }
+  .product-buy-form {
+    padding-left: 16px;
+    .product-title-container {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #e4e4e4;
+    }
+
+    .product-use-buttons {
+      button {
+        all: unset;
+        display: inline-block;
+        padding: 8px;
+        margin-right: 12px;
+        font-weight: 500;
+      }
+      .like-button {
+        width: 76px;
+        height: 34px;
+        background-color: #fff0f0;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        color: #d46f77;
+      }
+      .save-button,
+      .share-button {
+        background-color: #edf0f8;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        color: #3a4980;
+      }
+    }
+
+    .product-title {
+      font-size: 28px;
+      font-weight: 600;
+    }
+    .product-category {
+      font-size: 16px;
+      color: #b9bbbf;
+    }
+
+    .product-price-container {
+      padding: 30px 0;
+      border-bottom: 2px solid #e4e4e4;
+      display: flex;
+      align-items: center;
+
+      .product-price {
+        font-size: 34px;
+        font-weight: 600;
+      }
+      .actual-price {
+        font-size: 21px;
+        text-decoration: line-through;
+      }
+
+      .product-essentials {
+        margin-left: 40px;
+        button {
+          all: unset;
+          display: inline-block;
+          padding: 8px;
+          border-radius: 10px;
+          margin-right: 12px;
+          font-weight: 500;
+        }
+
+        .product-rating {
+          background-color: #fbf3ea;
+          color: #d48d3b;
+        }
+        .review-button {
+          background-color: #edf0f8;
+          color: #3a4980;
+        }
+
+        .recommended-msg {
+          padding-top: 12px;
+          color: #b9bbbf;
+          font-weight: 400;
+          font-size: 14px;
+        }
+        .recommended-count {
+          color: #3e9242;
+        }
+      }
+    }
+
+    .product-final-button-container {
+      padding: 30px 0;
+      border-bottom: 2px solid #e4e4e4;
+      display: flex;
+      align-items: center;
+      button {
+        all: unset;
+        font-size: 18px;
+        padding: 4px;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .product-stepper {
+        width: 100%;
+        max-width: 170px;
+        padding: 16px;
+        background-color: #f3f3f3;
+        border-radius: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #3a4980;
+        font-weight: 600;
+
+        .product-quantity {
+          margin: 0;
+          font-size: 22px;
+        }
+      }
+
+      .add-to-cart {
+        width: 100%;
+        max-width: 310px;
+        text-align: center;
+        background-color: #3a4980;
+        padding: 20px;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    .extrafeatures-card {
+      border: 1px solid #e4e4e4;
+      border-radius: 14px;
+      margin-top: 30px;
+
+      .features-list {
+        padding-left: 17px;
+        list-style: none;
+
+        .featureslist-item {
+          padding: 17px 0;
+          &:first-child {
+            border-bottom: 1px solid #e4e4e4;
+          }
+        }
+        .feature-title {
+          font-size: 17px;
+          color: #3a4980;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+        .features-description {
+          font-size: 14px;
+          color: #726c6c;
+        }
+      }
+    }
+  }
+  .information-tab {
+    .mat-tab-group {
+
+        .mat-tab-header{
+            max-width: 50% !important;
+        }
+
+        .mat-tab-label{
+            font-size: 17px;
+            font-weight: 500;
+            color: #3a4980;
+        }
+    }
+  }
+}

@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
-import {
-  LoginFormData,
-  loginResponse,
-  registerFormModel,
-} from '../../models/models';
-import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,89 +7,77 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  isLoggedIn: boolean = true;
-  loginForm: FormGroup;
-  registerForm: FormGroup;
+  isLogined: boolean = true;
+  isCreateAccount: boolean = false;
+  isForgotPassword: boolean = false;
+  isSubmitted: boolean = false;
+  submitFormLogin: boolean = false;
+  isForgotSubmitForm:boolean = false
+  visibilityIcon: boolean = true;
+  checkText: boolean = false;
+  successMessage:any;
+  isRegister!: FormGroup;
+  isLoginedForm!: FormGroup;
+  isForgot!:FormGroup;
 
-  constructor(
-    private authentication_Service: AuthenticationServiceService,
-    private router: Router
-  ) {
-    this.loginForm = new FormGroup({});
-    this.registerForm = new FormGroup({});
+
+  constructor(private formBuider: FormBuilder) { }
+
+  Login() {
+    this.isLogined = true;
+    this.isCreateAccount = false;
+    this.isForgotPassword = false;
+  }
+
+  createAccount() {
+    this.isCreateAccount = true;
+    this.isLogined = false;
+    this.isForgotPassword = false;
+  }
+
+  forgotPassword() {
+    this.isForgotPassword = true;
+    this.isCreateAccount = false;
+    this.isLogined = false;
   }
 
   ngOnInit(): void {
-    this.InitializeLoginForm();
+    this.isRegister = this.formBuider.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9._%+-]+@(outlook|gmail|yahoo)\.com')]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    })
+
+    this.isLoginedForm = this.formBuider.group({
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9._%+-]+@(outlook|gmail|yahoo)\.com')]],
+      password: ['', [Validators.required, Validators.minLength(8)] ]
+    })
+
+    this.isForgot = this.formBuider.group({
+      email:['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9._%+-]+@(outlook|gmail|yahoo)\.com')]]
+    })
+
   }
 
-  InitializeLoginForm() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-    });
+  toggle() {
+    this.visibilityIcon = !this.visibilityIcon;
+    this.checkText = !this.checkText;
   }
 
-  getLoginFormData(): LoginFormData | undefined {
-    let { email, password } = this.loginForm.controls;
-    if (!email.value && !password.value) return;
-    return { email: email.value, password: password.value };
+  submitFormLoginData() {
+    this.submitFormLogin = true;
+    if (this.isLoginedForm.invalid) return
   }
 
-  loginUser() {
-    let formData: LoginFormData | undefined = this.getLoginFormData();
-    if (!formData) return;
-    let loginPayload: LoginFormData = formData;
-    // this.loginForm.reset();
-    this.authentication_Service.handleLogin(loginPayload).subscribe({
-      next: (success) => {
-        let { isLogedIn }: any = success;
 
-        !isLogedIn
-          ? this.router.navigateByUrl('/')
-          : this.router.navigateByUrl('/home');
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  submitFormData() {
+    this.isSubmitted = true;
+    if (this.isRegister.invalid)  return
   }
 
-  registerUserForm() {
-    this.isLoggedIn = !this.isLoggedIn;
-    if (!this.isLoggedIn) this.InitializeRegisterationForm();
-  }
-
-  InitializeRegisterationForm() {
-    this.registerForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.required),
-      termcondition: new FormControl('', Validators.required),
-    });
-  }
-
-  handleUserRegisteration() {
-    let { firstName, lastName, email, password, termcondition } =
-      this.registerForm.controls;
-    if (!firstName.value && !lastName.value && !email.value && !password.value)
-      return;
-    let registerPayload: registerFormModel = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      email: email.value,
-      password: password.value,
-    };
-    if (!termcondition) return;
-    this.registerForm.reset();
-    this.authentication_Service.handleRegistration(registerPayload).subscribe({
-      next: (success) => {
-        console.log(success);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  ForgotPass(){
+    this.isForgotSubmitForm = true;
+    if(this.isForgot.invalid) return
   }
 }

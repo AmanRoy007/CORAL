@@ -1,143 +1,319 @@
-<div class="login-component">
-  <ng-container>
-    <ng-template [ngIf]="isLoggedIn">
-      <div class="login-wrp">
-        <form [formGroup]="loginForm" novalidate>
-          <h2>Sign In</h2>
-          <p>Welcome back! Please enter your details</p>
-          <div class="login-control">
-            <input
-              type="email"
-              placeholder=" "
-              id="email"
-              autocomplete="off"
-              class="email-inpt"
-              formControlName="email"
-            />
-            <label for="email" class="email-labl">Email</label>
-          </div>
-  
-          <div class="login-control">
-            <input
-              type="password"
-              placeholder=" "
-              id="password"
-              autocomplete="off"
-              class="pass-inpt"
-              formControlName="password"
-            />
-            <label for="password" class="pass-labl">Enter your password</label>
-          </div>
-        </form>
-  
-        <a href="javascript:void(0)" class="forgot-pass">Forgot Password</a>
-  
-        <button
-          type="button"
-          class="login-btn"
-          (click)="loginUser()"
-          [disabled]="!loginForm.controls['email'].value"
-        >
-          Sign In
-        </button>
-  
-        <div class="login-other-platforms">
-          <button class="signup-with-google" type="button">Google</button>
-          <button class="signup-with-fb" type="button">Facebook</button>
-        </div>
-  
-        <p class="account-txt">
-          Don't you have an account?
-          <a
-            href="javascript:void(0)"
-            class="sign-up-link"
-            (click)="registerUserForm()"
-            >Sign Up</a
-          >
-        </p>
-      </div>
-    </ng-template>
-    <ng-template [ngIf]="!isLoggedIn">
-      <div class="login-wrp">
-        <h2>Create An Account</h2>
-        <p>Complete all the fields to create account</p>
-  
-        <form [formGroup]="registerForm" novalidate>
-          <div class="login-control">
-            <input
-              type="text"
-              placeholder=" "
-              id="fname"
-              autocomplete="off"
-              class="fname"
-              formControlName="firstName"
-            />
-            <label for="fname" class="fname-labl">First Name</label>
-          </div>
-  
-          <div class="login-control">
-            <input
-              type="text"
-              placeholder=" "
-              id="lname"
-              autocomplete="off"
-              class="lname"
-              formControlName="lastName"
-            />
-            <label for="lname" class="lname-labl">Last Name</label>
-          </div>
-  
-          <div class="login-control">
-            <input
-              type="email"
-              placeholder=" "
-              id="email"
-              autocomplete="off"
-              class="email-inpt"
-              formControlName="email"
-            />
-            <label for="email" class="email-labl">Email</label>
-          </div>
-  
-          <div class="login-control">
-            <input
-              type="password"
-              placeholder=" "
-              id="password"
-              autocomplete="off"
-              class="pass-inpt"
-              formControlName="password"
-            />
-            <label for="password" class="pass-labl">Password</label>
-          </div>
-  
-          <p class="suggest-pass-pattrn">
-            Passwords must be between 8 and 20 characters in length and contain 1
-            upper case letter, 1 lower case letter, and 1 number.
-          </p>
-  
-          <div class="login-checkbox">
-            <input
-              type="checkbox"
-              id="condition"
-              formControlName="termcondition"
-            />
-            <label for="condition" class="accept-conditions"
-              >Accept All Terms & Conditons</label
-            >
-          </div>
-        </form>
-        <button
-          type="button"
-          class="create-acc-btn"
-          (click)="handleUserRegisteration()"
-          [disabled]="!registerForm.controls['termcondition'].value"
-        >
-          Register
+<!-- Login -->
+<ng-template [ngIf]="isLogined">
+  <form [formGroup]="isLoginedForm" (ngSubmit)="submitFormLoginData()">
+    <div class="login-wrp">
+      <h2>Welcome Back, User</h2>
+      <p>Please enter your details.</p>
+
+      <div class="login-in-google">
+        <button mat-stroked-button type="button">
+          <img
+            src="../../assets/google-icon.svg"
+            width="18"
+            class="google-icon"
+          />
+          Login with Google
         </button>
       </div>
-    </ng-template>
-  </ng-container>
-</div>
 
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" />
+        </mat-form-field>
+        <span
+          *ngIf="
+            !isLoginedForm.get('email')?.hasError('pattern') &&
+            isLoginedForm.get('email')?.invalid &&
+            (isLoginedForm.get('email')?.dirty ||
+              isLoginedForm.get('email')?.touched)
+          "
+          class="error-mssge"
+          >* Email is Required</span
+        >
+        <span
+          *ngIf="
+            submitFormLogin &&
+            !(
+              isLoginedForm.get('email')?.dirty ||
+              isLoginedForm.get('email')?.touched
+            )
+          "
+          class="error-mssge"
+          >Email Name cannot be blank</span
+        >
+        <span
+          *ngIf="
+            submitFormLogin && isLoginedForm.get('email')?.hasError('pattern')
+          "
+          class="error-mssge"
+          >Please enter a valid Email Address</span
+        >
+      </div>
 
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <mat-icon matSuffix (click)="toggle()">{{
+            visibilityIcon ? "visibility_off" : "visibility"
+          }}</mat-icon>
+          <input
+            matInput
+            placeholder="Enter you password"
+            formControlName="password"
+            [type]="checkText ? 'text' : 'password'"
+          />
+        </mat-form-field>
+
+        <span
+          *ngIf="
+            isLoginedForm.get('password')?.invalid &&
+            (isLoginedForm.get('password')?.dirty ||
+              isLoginedForm.get('password')?.touched)
+          "
+          class="error-mssge"
+          >* Password is Required</span
+        >
+        <span
+          *ngIf="
+            submitFormLogin &&
+            !(
+              isLoginedForm.get('password')?.dirty ||
+              isLoginedForm.get('password')?.touched
+            )
+          "
+          class="error-mssge"
+          >Password cannot be blank</span
+        >
+      </div>
+
+      <a
+        href="javascript:void(0)"
+        class="Forgot-link"
+        (click)="forgotPassword()"
+        >Forgot password</a
+      >
+
+      <div class="login-btn-wrp">
+        <button mat-raised-button color="primary">Login</button>
+      </div>
+
+      <p class="not-account">
+        Don't have an account?
+        <a
+          href="javascript:void(0)"
+          class="sign-up-link"
+          (click)="createAccount()"
+          >Create Account</a
+        >
+      </p>
+    </div>
+  </form>
+</ng-template>
+
+<!-- Create an Account -->
+
+<ng-template [ngIf]="isCreateAccount">
+  <form [formGroup]="isRegister" (ngSubmit)="submitFormData()">
+    <div class="create-acc-wrp">
+      <h2>Create an account</h2>
+      <p>Enter the field below to get started!</p>
+
+      <div class="login-in-google">
+        <button mat-stroked-button type="button">
+          <img
+            src="../../assets/google-icon.svg"
+            width="18"
+            class="google-icon"
+          />
+          Login with Google
+        </button>
+      </div>
+
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+        </mat-form-field>
+        <span
+          *ngIf="
+            isRegister.get('firstName')?.invalid &&
+            (isRegister.get('firstName')?.dirty ||
+              isRegister.get('firstName')?.touched)
+          "
+          class="error-mssge"
+          >* First Name is Required</span
+        >
+        <span
+          *ngIf="
+            isSubmitted &&
+            !(
+              isRegister.get('firstName')?.dirty ||
+              isRegister.get('firstName')?.touched
+            )
+          "
+          class="error-mssge"
+          >First Name cannot be blank</span
+        >
+      </div>
+
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName" />
+        </mat-form-field>
+        <span
+          *ngIf="
+            isRegister.get('lastName')?.invalid &&
+            (isRegister.get('lastName')?.dirty ||
+              isRegister.get('lastName')?.touched)
+          "
+          class="error-mssge"
+          >* Last Name is Required</span
+        >
+        <span
+          *ngIf="
+            isSubmitted &&
+            !(
+              isRegister.get('lastName')?.dirty ||
+              isRegister.get('lastName')?.touched
+            )
+          "
+          class="error-mssge"
+          >Last Name cannot be blank</span
+        >
+      </div>
+
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" />
+        </mat-form-field>
+        <span
+          *ngIf="
+            !isRegister.get('email')?.hasError('pattern') &&
+            isRegister.get('email')?.invalid &&
+            (isRegister.get('email')?.dirty || isRegister.get('email')?.touched)
+          "
+          class="error-mssge"
+          >* Email is Required</span
+        >
+        <span
+          *ngIf="
+            isSubmitted &&
+            !(
+              isRegister.get('email')?.dirty || isRegister.get('email')?.touched
+            )
+          "
+          class="error-mssge"
+          >Email Name cannot be blank</span
+        >
+        <span
+          *ngIf="isSubmitted && isRegister.get('email')?.hasError('pattern')"
+          class="error-mssge"
+          >Please enter a valid Email Address</span
+        >
+      </div>
+
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <mat-icon matSuffix (click)="toggle()">{{ visibilityIcon }}</mat-icon>
+          <input
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            [type]="checkText ? 'text' : 'password'"
+          />
+        </mat-form-field>
+        <span
+          *ngIf="
+            isRegister.get('password')?.invalid &&
+            (isRegister.get('password')?.dirty ||
+              isRegister.get('password')?.touched)
+          "
+          class="error-mssge"
+          >* Password is Required</span
+        >
+        <span
+          *ngIf="
+            isSubmitted &&
+            !(
+              isRegister.get('password')?.dirty ||
+              isRegister.get('password')?.touched
+            )
+          "
+          class="error-mssge"
+          >Password cannot be blank</span
+        >
+      </div>
+
+      <div class="login-btn-wrp">
+        <button mat-raised-button color="primary">Create Account</button>
+      </div>
+
+      <p class="not-account">
+        Already Have an Account?
+        <a href="javascript:void(0)" class="sign-up-link" (click)="Login()"
+          >Log in</a
+        >
+      </p>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template [ngIf]="isForgotPassword">
+  <form [formGroup]="isForgot" (ngSubmit)="ForgotPass()">
+    <div class="forgot-pass-wrp">
+      <h2>Forgot Password</h2>
+      <p>No worries, we'll send you reset instructions</p>
+
+      <div class="form-controls">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" />
+        </mat-form-field>
+
+        <span
+          *ngIf="
+            !isForgot.get('email')?.hasError('pattern') &&
+            isForgot.get('email')?.invalid &&
+            (isForgot.get('email')?.dirty || isForgot.get('email')?.touched)
+          "
+          class="error-mssge"
+          >* Email is Required</span
+        >
+        <span
+          *ngIf="
+            isForgotSubmitForm &&
+            !(isForgot.get('email')?.dirty || isForgot.get('email')?.touched)
+          "
+          class="error-mssge"
+          >Email Name cannot be blank</span
+        >
+        <span
+          *ngIf="
+            isForgotSubmitForm && isForgot.get('email')?.hasError('pattern')
+          "
+          class="error-mssge"
+          >Please enter a valid Email Address</span
+        >
+      </div>
+
+      <div class="login-btn-wrp">
+        <button mat-raised-button color="primary">Send Reset Link</button>
+      </div>
+
+      <p class="not-account">
+        Already Have an Account?
+        <a href="javascript:void(0)" class="sign-up-link" (click)="Login()"
+          >Log in</a
+        >
+      </p>
+    </div>
+  </form>
+</ng-template>

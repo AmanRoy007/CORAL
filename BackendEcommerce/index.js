@@ -6,6 +6,8 @@ import {
   findExistingUser,
 } from "./connectionDB.js";
 
+import productsList from './allProducts.js';
+
 dotenv.config();
 const app = express();
 
@@ -16,6 +18,14 @@ const PORT = 5000;
 app.get("/", function (req, res) {
   res.send("Server is running /👍");
 });
+
+
+// get product filters
+
+app.get('/products',function(req,res){
+  let productList = productsList;
+  res.status(200).json({result:productList});
+})
 
 //Post request for login user;
 app.post("/login", function (request, response) {

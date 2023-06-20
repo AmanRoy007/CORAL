@@ -1,0 +1,36 @@
+.product-filter-section{
+    padding: 40px 0 ;
+    .container{
+        .title{
+            text-align: center;
+            font-size: 50px;
+            padding-bottom: 40px;
+            margin: 0;
+        }
+
+        .product-filter-controls{
+            margin-bottom: 40px;
+            .product-filter-control-list{
+                display: flex;
+                list-style: none;
+
+                .product-filter-control-listItem{
+                    margin-right: 40px;
+
+                    a{
+                        text-decoration: none;
+                        color: #000;
+                    }
+                }
+            }
+        }
+
+        .product-cards-section{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            width:100%
+        }
+    }
+}
