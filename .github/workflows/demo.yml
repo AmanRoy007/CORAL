@@ -19,6 +19,7 @@ jobs:
       - name: List files in the repository
         run: |
           cd ${{ github.workspace }}/BackendEcommerce
+      - run: npm install
       - run: npm start
       - run: echo "Server Started"
       - run: echo "🍏 This job's status is ${{ job.status }}."
