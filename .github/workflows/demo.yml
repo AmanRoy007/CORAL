@@ -18,6 +18,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          cd ${{ github.workspace }}/BackendEcommerce
-      - run: echo "I am in Backend Folder"
+          cd ${{ github.workspace }}/BackendEcommerce/index.js
+      - run: npm start
+      - run: echo "Server Started"
       - run: echo "🍏 This job's status is ${{ job.status }}."
