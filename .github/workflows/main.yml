@@ -15,7 +15,7 @@ jobs:
     - run: npm install -g @angular/cli > /dev/null
     - run: ng build --prod --output-path=dist --base-href="https://amanroy007.github.io/CORAL/FrontendEcommerce"
     - name: Publish generated content to GitHub Pages
-      uses: amanroy007/actions-publish-gh-pages@v1.0.1
+      uses: amanroy007/CORAL@v1.0.1
       with:
           dir: dist
           branch: gh-pages
