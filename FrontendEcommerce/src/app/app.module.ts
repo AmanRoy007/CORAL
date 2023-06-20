@@ -12,9 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './components/login/login.component';
+import { HomeModule } from './components/home/home.module';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductCartComponent } from './components/product-cart/product-cart.component';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent],
+  declarations: [AppComponent,LoginComponent,HeaderComponent,FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    HomeModule
   ],
   providers: [LoginGuardGuard],
   bootstrap: [AppComponent],
