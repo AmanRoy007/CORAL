@@ -19,3 +19,7 @@ jobs:
           node-version: '12.x'
       - run: npm install
       - run: echo "node installed succesfully on ${{github.repository}}"
+      - name: dive into backend folder
+        run: cd ${{github.repository}}/BackendEcommerce
+      - run: npm start 
+      - run: echo "server started"
