@@ -20,10 +20,11 @@
     </div>
 
     <div class="product-cards-section">
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-      <app-product-card></app-product-card>
-    </div>
+      <ng-container *ngIf="productFilterList">
+          <ng-container  *ngFor="let item of productFilterList">
+              <app-product-card [productDetails]="item"></app-product-card>
+          </ng-container>
+      </ng-container>
+  </div>
   </div>
 </section>
