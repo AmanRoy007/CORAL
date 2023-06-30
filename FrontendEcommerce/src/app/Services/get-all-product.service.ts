@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class GetAllProductService {
 
 
-  private productUrl:string = 'http://localhost:5000/products';
+  private productUrl:string = 'https://coral-yuom.onrender.com/';
   constructor(private http:HttpClient) { }
 
 
