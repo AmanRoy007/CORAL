@@ -7,13 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 export class CartServiceService {
   cartProductDetails = new BehaviorSubject<any>('');
 
+   productArray:any[]= [];
   constructor() {}
 
   setProductToCart(productObject: any) {
-    let productArray = [];
     if (!productObject) return;
-    productArray.push(productObject);
-    this.cartProductDetails.next(productArray);
+    this.productArray.push(productObject);
+    this.cartProductDetails.next(this.productArray);
   }
 
 

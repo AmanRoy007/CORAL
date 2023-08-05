@@ -5,17 +5,24 @@ import { ProductPageComponent } from '../product-page/product-page.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path:"productPage/:id",
-    component:ProductPageComponent
-  }
+    path: 'productPage/:id',
+    component: ProductPageComponent,
+  },
+  {
+    path: 'category/:id',
+    loadChildren: () =>
+      import(
+        '../../components/module/product-categories/product-categories.module'
+      ).then((m) => m.ProductCategoriesModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}
