@@ -5,14 +5,21 @@ import { LoginGuardGuard } from './guards/login-guard.guard';
 
 const routes: Routes = [
   {
-    path:"",
-    loadChildren:()=>import('./components/home/home.module').then((module)=>module.HomeModule),
+    path: '',
+    loadChildren: () =>
+      import('./components/home/home.module').then(
+        (module) => module.HomeModule
+      ),
     // canActivate: [LoginGuardGuard]
+  },
+  {
+    component:LoginComponent,
+    path:'login'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
