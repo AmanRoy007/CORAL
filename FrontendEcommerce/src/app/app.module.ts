@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeModule } from './components/home/home.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductCartComponent } from './components/product-cart/product-cart.component';
+
 @NgModule({
   declarations: [AppComponent,LoginComponent,HeaderComponent,FooterComponent],
   imports: [

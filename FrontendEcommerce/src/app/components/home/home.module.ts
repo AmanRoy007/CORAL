@@ -8,9 +8,8 @@ import { ProductFilterComponent } from '../product-filter/product-filter.compone
 import { ProductCardComponent } from '../product-filter/product-card/product-card.component';
 import { BestSellerComponent } from '../best-seller/best-seller.component';
 import { ProductPageComponent } from '../product-page/product-page.component';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ProductCartComponent } from '../product-cart/product-cart.component';
-import { ProductDescriptionComponent } from '../product-description/product-description.component';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -19,7 +18,6 @@ import { ProductDescriptionComponent } from '../product-description/product-desc
     BestSellerComponent,
     ProductPageComponent,
     ProductCartComponent,
-    ProductDescriptionComponent
   ],
   imports: [
     CommonModule,

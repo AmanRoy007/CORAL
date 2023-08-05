@@ -1,6 +1,7 @@
 .product-page-section {
   .product-features-card {
     display: flex;
+    padding-top: 40px;
     margin-top: 40px;
   }
 
@@ -13,12 +14,10 @@
     padding-right: 16px;
     display: flex;
     justify-content: center;
+    align-items: center;
     .product-image {
       width: 100%;
-      max-width: 500px;
-      max-height: 500px;
-      position: sticky;
-    top: 0;
+      max-width: 587px;
     }
   }
   .product-buy-form {
@@ -117,7 +116,6 @@
       padding: 30px 0;
       border-bottom: 2px solid #e4e4e4;
       display: flex;
-      gap: 30px;
       align-items: center;
       button {
         all: unset;
@@ -131,10 +129,11 @@
         max-width: 170px;
         padding: 16px;
         background-color: #f3f3f3;
+        border-radius: 30px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        color: #000;
+        color: #3a4980;
         font-weight: 600;
 
         .product-quantity {
@@ -147,8 +146,9 @@
         width: 100%;
         max-width: 310px;
         text-align: center;
-        background-color: #1e2832;
+        background-color: #3a4980;
         padding: 20px;
+        border-radius: 30px;
         color: #fff;
         font-size: 16px;
         font-weight: 500;
@@ -157,6 +157,7 @@
 
     .extrafeatures-card {
       border: 1px solid #e4e4e4;
+      border-radius: 14px;
       margin-top: 30px;
 
       .features-list {
@@ -171,7 +172,7 @@
         }
         .feature-title {
           font-size: 17px;
-          color: #000;
+          color: #3a4980;
           font-weight: 600;
           letter-spacing: 1px;
         }
@@ -184,15 +185,16 @@
   }
   .information-tab {
     .mat-tab-group {
-      .mat-tab-header {
-        max-width: 50% !important;
-      }
 
-      .mat-tab-label {
-        font-size: 17px;
-        font-weight: 500;
-        color: #3a4980;
-      }
+        .mat-tab-header{
+            max-width: 50% !important;
+        }
+
+        .mat-tab-label{
+            font-size: 17px;
+            font-weight: 500;
+            color: #3a4980;
+        }
     }
   }
 }
