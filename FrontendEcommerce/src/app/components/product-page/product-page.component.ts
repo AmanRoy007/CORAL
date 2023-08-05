@@ -20,7 +20,7 @@ export class ProductPageComponent implements OnInit {
   constructor(
     private getproductService: GetAllProductService,
     private router: ActivatedRoute,
-    private cartService:CartServiceService
+    private cartService: CartServiceService
   ) {}
 
   ngOnInit(): void {
@@ -56,16 +56,16 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-  handleCartItem()
-  {
+  handleCartItem() {
     this.productCart.addActiveClass();
     let productObject = {
-      "productId": this.productDetails?.productId,
-      "productName":this.productDetails?.productTitle,
-      "quanitity":this.initialProductCount,
-      "productPrice":this.productDetails?.productPrice,
-      "productImage":this.productDetails?.productImage
-    }
+      productId: this.productDetails?.productId,
+      productName: this.productDetails?.productTitle,
+      quanitity: this.initialProductCount,
+      productPrice:
+       this.productDetails?.productPrice!,
+      productImage: this.productDetails?.productImage,
+    };
     this.cartService.setProductToCart(productObject);
   }
 }
