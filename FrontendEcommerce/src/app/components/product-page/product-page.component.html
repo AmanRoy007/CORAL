@@ -54,9 +54,13 @@
               <p class="product-quantity">{{ initialProductCount }}</p>
               <button class="plus" (click)="incrementCounter()">+</button>
             </div>
-            <button class="add-to-cart" (click)="handleCartItem()">
+            <a
+              routerLink="/cart"
+              class="add-to-cart"
+              (click)="handleCartItem()"
+            >
               Add To Cart
-            </button>
+            </a>
           </div>
 
           <div class="extrafeatures-card">
@@ -75,12 +79,9 @@
               </li>
             </ul>
           </div>
-      <app-product-description></app-product-description>
-
+          <app-product-description></app-product-description>
         </div>
       </div>
     </ng-container>
   </div>
 </section>
-
-<app-product-cart #productCart></app-product-cart>

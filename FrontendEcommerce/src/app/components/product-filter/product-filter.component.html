@@ -1,41 +1,30 @@
 <section class="product-filter-section">
-    <div class="container">
-        <h1 class="title">Or subscribe to the newsletter</h1>
+  <div class="container">
+    <h1 class="title">Or subscribe to the newsletter</h1>
 
-        <div class="product-filter-controls">
-            <ul class="product-filter-control-list">
-                <li class="product-filter-control-listItem">
-                    <a routerLink="">All Products</a>
-                </li>
-                <li class="product-filter-control-listItem">
-                    <a routerLink="">T-shirt</a>
-                </li> <li class="product-filter-control-listItem">
-                    <a routerLink="">Hoodies</a>
-                </li> <li class="product-filter-control-listItem">
-                    <a routerLink="">Jacket</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="product-cards-section">
-            <ng-container *ngIf="productFilterList">
-                <ng-container  *ngFor="let item of productFilterList">
-                    <app-product-card [productDetails]="item"></app-product-card>
-                </ng-container>
-            </ng-container>
-        </div>
-       
-
-        <div >
-           
-            <!-- <app-product-card></app-product-card>
-            <app-product-card></app-product-card>
-            <app-product-card></app-product-card>
-            <app-product-card></app-product-card>
-            <app-product-card></app-product-card>
-            <app-product-card></app-product-card>
-            <app-product-card></app-product-card> -->
-        </div>
+    <div class="product-filter-controls">
+      <ul class="product-filter-control-list">
+        <li class="product-filter-control-listItem">
+          <a routerLink="">All Products</a>
+        </li>
+        <li class="product-filter-control-listItem">
+          <a routerLink="">T-shirt</a>
+        </li>
+        <li class="product-filter-control-listItem">
+          <a routerLink="">Hoodies</a>
+        </li>
+        <li class="product-filter-control-listItem">
+          <a routerLink="">Jacket</a>
+        </li>
+      </ul>
     </div>
-   
+
+    <div class="product-cards-section">
+      <ng-container *ngIf="productFilterList">
+        <ng-container *ngFor="let item of productFilterList">
+          <app-product-card [productDetails]="item"></app-product-card>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
 </section>

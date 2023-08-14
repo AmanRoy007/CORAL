@@ -11,6 +11,7 @@ import { ProductPageComponent } from '../product-page/product-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProductCartComponent } from '../product-cart/product-cart.component';
 import { ProductDescriptionComponent } from '../product-description/product-description.component';
+import { CheckoutPageComponent } from '../checkout-page/checkout-page.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -19,7 +20,8 @@ import { ProductDescriptionComponent } from '../product-description/product-desc
     BestSellerComponent,
     ProductPageComponent,
     ProductCartComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    CheckoutPageComponent,
   ],
   imports: [
     CommonModule,
@@ -28,5 +30,14 @@ import { ProductDescriptionComponent } from '../product-description/product-desc
     MatIconModule,
     MatTabsModule,
   ],
+  exports:[
+    ProductFilterComponent,
+    ProductCardComponent,
+    BestSellerComponent,
+    ProductPageComponent,
+    ProductCartComponent,
+    ProductDescriptionComponent,
+    CheckoutPageComponent,
+  ]
 })
 export class HomeModule {}

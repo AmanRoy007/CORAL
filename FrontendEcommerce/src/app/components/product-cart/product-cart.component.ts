@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from 'src/app/Services/cart-service.service';
 
 @Component({
@@ -25,7 +25,5 @@ export class ProductCartComponent implements OnInit {
     });
   }
 
-  addActiveClass() {
-    this.isOpen = !this.isOpen;
-  }
+  
 }

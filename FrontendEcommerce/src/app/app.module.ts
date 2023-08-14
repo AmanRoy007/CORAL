@@ -26,7 +26,6 @@ import { FooterComponent } from './components/footer/footer.component';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    HomeModule
   ],
   providers: [LoginGuardGuard],
   bootstrap: [AppComponent],
