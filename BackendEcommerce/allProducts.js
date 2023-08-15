@@ -1,4 +1,4 @@
-const productsList = [
+export const productsList = [
   {
     productId: "01_001",
     productTitle: "Adicolor Classics Joggers",

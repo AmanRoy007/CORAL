@@ -1,12 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-// import {
-//   buildConnection,
-//   registerUserData,
-//   findExistingUser,
-// } from "./connectionDB.js";
-
-import productsList from './allProducts.js';
+import { buildConnection, readQuery } from "./connectionDB.js";
 
 dotenv.config();
 const app = express();
@@ -16,16 +10,27 @@ app.use(express.json());
 const PORT = 5000;
 
 app.get("/", function (req, res) {
-  res.send("Server is running /👍");
+  res.status(200).send("Server is Running");
 });
-
-
 // get product filters
 
-app.get('/products',function(req,res){
-  let productList = productsList;
-  res.status(200).json({result:productList});
-})
+app.get("/products", function (req, res) {
+  buildConnection().then(async (isConnected) => {
+    let query = {};
+    if (isConnected) {
+      try {
+        let result = await readQuery("CORAL_Ecommerce", "Products", query);
+        if (result.length) {
+          res.status(200).send({ result: result });
+        } else {
+          res.status(404).send("No Data Found");
+        }
+      } catch (error) {
+        res.status(403).status({ error: error });
+      }
+    }
+  });
+});
 
 //Post request for login user;
 // app.post("/login", function (request, response) {
