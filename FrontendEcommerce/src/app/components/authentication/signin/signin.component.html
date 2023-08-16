@@ -1,0 +1,78 @@
+<ng-container *ngIf="isSignIn">
+  <div class="login-formWrapper">
+    <span class="main-logo"></span>
+    <h3 class="main-title">Sign in to your account</h3>
+    <p class="main-desc">
+      Don't have an account ?
+      <a (click)="isSignIn = !isSignIn"> Sign up now.</a>
+    </p>
+    <form [formGroup]="loginForm" class="login-form">
+      <div class="form-control">
+        <label for="email">Email address</label>
+        <input type="email" name="email" id="email" formControlName="email"  autocomplete="email"/>
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          autocomplete="current-password"
+          formControlName="password"
+        />
+      </div>
+    </form>
+
+    <Button (click)="getFormData('loginForm')">Sign in </Button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!isSignIn">
+  <div class="login-formWrapper">
+    <span class="main-logo"></span>
+    <h3 class="main-title">Create a new account</h3>
+    <p class="main-desc">
+      Already have an account ?
+      <a (click)="isSignIn = !isSignIn"> Sign in now.</a>
+    </p>
+    <form [formGroup]="signUpForm" class="login-form">
+      <div class="form-control">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          formControlName="firstName"
+        />
+      </div>
+      <div class="form-control">
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" formControlName="lastName" />
+      </div>
+      <div class="form-control">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" formControlName="email" />
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="form-control">
+        <label for="password">Confirm Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          formControlName="confirmPassword"
+        />
+      </div>
+    </form>
+
+    <Button (click)="getFormData('signUpForm')">Sign up </Button>
+  </div>
+</ng-container>

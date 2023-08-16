@@ -8,6 +8,7 @@ export interface registerFormModel {
   lastName: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface loginResponse {
@@ -16,17 +17,17 @@ export interface loginResponse {
 }
 
 export interface productDetails {
-    productId: number,
-    productTitle: string
-    productImage: string
-    productCategory: string
-    productPrice: number,
-    productSalePrice?: string
-    isOnSale?: boolean,
-    isBestSeller?: boolean,
-    isHot: boolean
+  productId: number;
+  productTitle: string;
+  productImage: string;
+  productCategory: string;
+  productPrice: number;
+  productSalePrice?: string;
+  isOnSale?: boolean;
+  isBestSeller?: boolean;
+  isHot: boolean;
 }
 
 export interface productList {
-   result: any[]
+  result: any[];
 }

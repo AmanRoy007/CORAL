@@ -14,12 +14,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { InterceptorService } from './Interceptor/interceptor.service';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { SigninComponent } from './components/authentication/signin/signin.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
+    AuthenticationComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
