@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import { buildConnection, readQuery } from "./connectionDB.js";
 import registerUser from "./Autthentication/authentication.js";
+import productsList from "./allProducts.js";
 
 dotenv.config();
 const app = express();
@@ -16,21 +17,22 @@ app.get("/", function (req, res) {
 // get product filters
 
 app.get("/products", function (req, res) {
-  buildConnection().then(async (isConnected) => {
-    let query = {};
-    if (isConnected) {
-      try {
-        let result = await readQuery("CORAL_Ecommerce", "Products", query);
-        if (result.length) {
-          res.status(200).send({ result: result });
-        } else {
-          res.status(404).send("No Data Found");
-        }
-      } catch (error) {
-        res.status(403).status({ error: error });
-      }
-    }
-  });
+  res.status(200).send({result:productsList})
+  // buildConnection().then(async (isConnected) => {
+  //   let query = {};
+  //   if (isConnected) {
+  //     try {
+  //       let result = await readQuery("CORAL_Ecommerce", "Products", query);
+  //       if (result.length) {
+  //         res.status(200).send({ result: result });
+  //       } else {
+  //         res.status(404).send("No Data Found");
+  //       }
+  //     } catch (error) {
+  //       res.status(403).status({ error: error });
+  //     }
+  //   }
+  // });
 });
 
 

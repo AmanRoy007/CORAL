@@ -1,0 +1,30 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="sideDrawer">
+    <aside class="side-nav">
+        <div class="logo-wrapper">
+            <span class="main-logo">CORAL</span>
+        </div>
+        <form class="search-control-form">
+            <div class="search-control">
+
+                <input type="text" name="search" id="search" placeholder="Enter text for search">
+            </div>
+        </form>
+        <div class="admin-actions">
+            <h4 class="action-title">Content Management</h4>
+            <ul class="item-list">
+                <li class="list-items"><a routerLink="products" class="list-item-links" routerLinkActive="active">Product</a></li>
+                <li class="list-items"><a routerLink="" class="list-item-links">Product</a></li> <li class="list-items"><a routerLink="" class="list-item-links">Product</a></li> <li class="list-items"><a routerLink="" class="list-item-links">Product</a></li> <li class="list-items"><a routerLink="" class="list-item-links">Product</a></li>
+            </ul>
+        </div>
+    </aside>
+  </mat-drawer>
+  <mat-drawer-content class="matDrawer-content">
+    <main class="content-area">
+        <div class="topbar">
+            topBar
+        </div>
+        <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>
