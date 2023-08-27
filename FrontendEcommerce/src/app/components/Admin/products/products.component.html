@@ -3,7 +3,7 @@
   <p>Manage your products here</p>
 
   <div class="product-action-ctawrapper">
-    <button class="add-productCta">Add Product</button>
+    <button class="add-productCta" (click)="openFormDialogue()">Add Product</button>
   </div>
   <div class="data-table-wrapper">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">

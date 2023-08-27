@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DiaglogService } from 'src/app/Services/diaglogeService/diaglog.service';
 import { GetAllProductService } from 'src/app/Services/get-all-product.service';
+import { AddProductComponent } from '../add-product/add-product.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   productId: string;
@@ -38,7 +41,10 @@ export class ProductsComponent implements OnInit {
   ];
   dataSource = ELEMENT_DATA;
 
-  constructor(private productService: GetAllProductService) {}
+  constructor(
+    private productService: GetAllProductService,
+    private dialogeService: DiaglogService,
+  ) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -46,9 +52,22 @@ export class ProductsComponent implements OnInit {
 
   getAllProducts() {
     this.productService.getAllProducts().subscribe({
-      next: (success:any) => {
+      next: (success: any) => {
         this.dataSource = success?.result;
       },
     });
+  }
+
+  openFormDialogue() {
+    const formDialogeRef = this.dialogeService.openDialog(AddProductComponent, {
+      'width':'1000px'
+    });
+
+    formDialogeRef.afterClosed().subscribe({
+      next:(data)=>{
+        console.log(data);
+      }
+    })
+
   }
 }

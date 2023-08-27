@@ -1,0 +1,35 @@
+.add-product-dialog{
+  display: flex;
+  .form-wrapper{
+    flex: 0 0 60%;
+    padding-right: 24px;
+    .form-control {
+      margin-bottom: 24px;
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      input {
+        padding: 12px;
+        border: 1px solid #b1b1b1;
+        width: 100%;
+        border-radius: 4px;
+      }
+    }
+
+  }
+
+  .image-Preview{
+    width: 312px;
+    height: 100%;
+    flex: 0 0 40%;
+  }
+}
+.add-product{
+  background-color: #1e2831;
+  color: #fff;
+  border-radius: unset;
+  width: 125px;
+}
+
+

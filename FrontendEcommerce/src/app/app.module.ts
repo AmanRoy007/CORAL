@@ -16,6 +16,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { InterceptorService } from './Interceptor/interceptor.service';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { SigninComponent } from './components/authentication/signin/signin.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { SigninComponent } from './components/authentication/signin/signin.compo
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
