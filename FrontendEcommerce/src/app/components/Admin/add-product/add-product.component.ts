@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -8,18 +8,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AddProductComponent implements OnInit {
   public formData!: any;
-  public addProductForm!: FormGroup;
+  public addProductForm!: UntypedFormGroup;
   public isImage:boolean = false;
   public imageSrc!:string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.addProductForm = new FormGroup({
-      productName: new FormControl(),
-      productCategory: new FormControl(),
-      productPrice: new FormControl(),
-      productImage: new FormControl(),
+    this.addProductForm = new UntypedFormGroup({
+      productName: new UntypedFormControl(),
+      productCategory: new UntypedFormControl(),
+      productPrice: new UntypedFormControl(),
+      productImage: new UntypedFormControl(),
     });
   }
 

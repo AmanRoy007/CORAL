@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { GetAllProductService } from 'src/app/Services/get-all-product.service';
 import { productList } from 'src/app/models/models';
@@ -12,7 +12,7 @@ import { productList } from 'src/app/models/models';
 export class ProductCategoriesComponent implements OnInit {
 
 
-  public filterForm!: FormGroup;
+  public filterForm!: UntypedFormGroup;
   public panelOpenState = false;
   public productFilterList:any[]|undefined;
 
@@ -20,7 +20,7 @@ export class ProductCategoriesComponent implements OnInit {
   @ViewChild(MatAccordion) matAccordion!:MatAccordion;
 
   constructor(private getproductService:GetAllProductService) {
-    this.filterForm = new FormGroup({
+    this.filterForm = new UntypedFormGroup({
       
     });
     

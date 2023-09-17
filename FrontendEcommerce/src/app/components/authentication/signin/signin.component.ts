@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Errors } from 'src/app/Enums/error';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { registerFormModel } from 'src/app/models/models';
@@ -12,8 +12,8 @@ import { registerFormModel } from 'src/app/models/models';
 export class SigninComponent implements OnInit {
   public isSignIn: boolean = true;
 
-  public loginForm!: FormGroup;
-  public signUpForm!: FormGroup;
+  public loginForm!: UntypedFormGroup;
+  public signUpForm!: UntypedFormGroup;
 
   public formError = Errors;
 
@@ -25,16 +25,16 @@ export class SigninComponent implements OnInit {
   }
 
   initializeForm() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+    this.loginForm = new UntypedFormGroup({
+      email: new UntypedFormControl('', [Validators.required, Validators.email]),
+      password: new UntypedFormControl('', Validators.required),
     });
-    this.signUpForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
+    this.signUpForm = new UntypedFormGroup({
+      firstName: new UntypedFormControl('', Validators.required),
+      lastName: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', Validators.required),
+      password: new UntypedFormControl('', Validators.required),
+      confirmPassword: new UntypedFormControl('', Validators.required),
     });
   }
 
