@@ -10,6 +10,10 @@
       <div class="form-control">
         <label for="email">Email address</label>
         <input type="email" name="email" id="email" formControlName="email"  autocomplete="email"/>
+        <div class="control-error-block">
+          <p [ngClass]="{error: loginForm.controls['email'].errors}" *ngIf="loginForm.controls['email'].errors?.['required'] && !loginForm.untouched">{{formError.emailRequired}}</p>
+          <p *ngIf="loginForm.controls['email'].errors?.['email'] && !loginForm.untouched">{{formError.isEmailValid}}</p>
+        </div>
       </div>
       <div class="form-control">
         <label for="password">Password</label>

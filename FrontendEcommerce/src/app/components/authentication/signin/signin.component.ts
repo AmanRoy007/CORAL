@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Errors } from 'src/app/Enums/error';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { registerFormModel } from 'src/app/models/models';
 
@@ -14,6 +15,9 @@ export class SigninComponent implements OnInit {
   public loginForm!: FormGroup;
   public signUpForm!: FormGroup;
 
+  public formError = Errors;
+
+
   constructor(private authService: AuthenticationServiceService) {}
 
   ngOnInit(): void {
@@ -22,7 +26,7 @@ export class SigninComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
     this.signUpForm = new FormGroup({
