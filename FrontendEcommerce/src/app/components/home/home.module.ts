@@ -21,7 +21,6 @@ import { CheckoutPageComponent } from '../checkout-page/checkout-page.component'
     ProductPageComponent,
     ProductCartComponent,
     ProductDescriptionComponent,
-    CheckoutPageComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +36,6 @@ import { CheckoutPageComponent } from '../checkout-page/checkout-page.component'
     ProductPageComponent,
     ProductCartComponent,
     ProductDescriptionComponent,
-    CheckoutPageComponent,
   ]
 })
 export class HomeModule {}

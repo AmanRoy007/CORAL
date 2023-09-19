@@ -20,7 +20,8 @@ export class AppComponent {
             routeData.url === '/login') ||
           (routeData instanceof NavigationStart &&
             routeData.url === '/dashboard') || (routeData instanceof NavigationStart &&
-              routeData.url === '/dashboard/products') 
+              routeData.url === '/dashboard/products') || (routeData instanceof NavigationStart &&
+                routeData.url === '/checkout') 
         ) {
           this.isLoginPage = true;
         } else if (

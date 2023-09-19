@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Errors } from 'src/app/Enums/error';
+import { RegExPattern } from 'src/app/Enums/validationPatterns';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
-import { registerFormModel } from 'src/app/models/models';
+// import { registerFormModel } from 'src/app/models/models';
+
 
 @Component({
   selector: 'app-signin',
@@ -27,37 +29,36 @@ export class SigninComponent implements OnInit {
   initializeForm() {
     this.loginForm = new UntypedFormGroup({
       email: new UntypedFormControl('', [Validators.required, Validators.email]),
-      password: new UntypedFormControl('', Validators.required),
+      password: new UntypedFormControl('', [Validators.required, Validators.minLength(8) , Validators.maxLength(8)]),
     });
     this.signUpForm = new UntypedFormGroup({
       firstName: new UntypedFormControl('', Validators.required),
       lastName: new UntypedFormControl('', Validators.required),
-      email: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', [Validators.required,Validators.pattern(/[a-zA-Z0-9]/g)]),
       password: new UntypedFormControl('', Validators.required),
       confirmPassword: new UntypedFormControl('', Validators.required),
     });
   }
 
-  getFormData(formName: string) {
-    if (formName === 'loginForm') {
-      console.log(this.loginForm);
-    } else {
-      console.log(this.signUpForm);
-      let payload: registerFormModel = {
-        firstName: this.signUpForm.controls['firstName'].value,
-        lastName: this.signUpForm.controls['lastName'].value,
-        email: this.signUpForm.controls['email'].value,
-        password: this.signUpForm.controls['password'].value,
-        confirmPassword: this.signUpForm.controls['confirmPassword'].value,
-      };
-      this.authService.handleRegistration(payload).subscribe({
-        next: (success) => {
-          console.log(success);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+
+
+  logInUser()
+  {
+    let {email, password} = this.loginForm.value;
+
+    if(!email && !password)
+    {
+      this.loginForm.markAllAsTouched()
     }
+
   }
+
+
+
+  registerUser()
+  {
+    let {firstName, lastName, email, password, confirmPassword} = this.signUpForm.value;
+    if(!firstName && !lastName &&!email&&!password&&!confirmPassword) this.signUpForm.markAllAsTouched();
+  }
+
 }

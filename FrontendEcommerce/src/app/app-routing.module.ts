@@ -24,8 +24,8 @@ const routes: Routes = [
     // canActivate: [LoginGuardGuard]
   },
   {
-    component: CheckoutPageComponent,
     path: 'checkout',
+    loadComponent:()=>import('./components/checkout-page/checkout-page.component').then((module)=>module.CheckoutPageComponent)
   },
   {
     component: ProductCartComponent,
