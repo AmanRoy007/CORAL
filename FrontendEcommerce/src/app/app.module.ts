@@ -18,6 +18,8 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { SigninComponent } from './components/authentication/signin/signin.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormControlsModule } from './components/FormControls/form-controls.module';
+import { SignupComponent } from './components/authentication/signup/signup.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { FormControlsModule } from './components/FormControls/form-controls.modu
     LoaderComponent,
     AuthenticationComponent,
     SigninComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { FormControlsModule } from './components/FormControls/form-controls.modu
     MatIconModule,
     MatInputModule,
     MatDialogModule,
-    FormControlsModule
+    FormControlsModule,
+    MatSnackBarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

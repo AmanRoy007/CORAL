@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AuthenticationComponent implements OnInit {
 
 
+  public isSignIn:boolean = true;
   constructor() { }
 
   ngOnInit(): void {

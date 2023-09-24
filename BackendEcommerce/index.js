@@ -1,13 +1,16 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import { buildConnection, readQuery } from "./connectionDB.js";
-import registerUser from "./Autthentication/authentication.js";
 import productsList from "./allProducts.js";
+import registerUser from "./Autthentication/authentication.js";
+import cors from 'cors';
+import loginUser from "./Autthentication/loginUser.js";
 
 dotenv.config();
 const app = express();
 
-app.use(express.json());
+app.use(express.json(),cors({
+  origin:'*'
+}));
 
 const PORT = 5000;
 
@@ -17,7 +20,7 @@ app.get("/", function (req, res) {
 // get product filters
 
 app.get("/products", function (req, res) {
-  res.status(200).send({result:productsList})
+  res.status(200).send({ result: productsList });
   // buildConnection().then(async (isConnected) => {
   //   let query = {};
   //   if (isConnected) {
@@ -35,16 +38,7 @@ app.get("/products", function (req, res) {
   // });
 });
 
-
-// Register User Routes
-
-app.post('/register',(request, response)=>{
-  let {firstName, lastName, email, password, confirmPassword} = request.body;
-  if(firstName && lastName && email && password && confirmPassword)
-  {
-    registerUser(firstName, lastName, email, password, confirmPassword);
-    response.status(200).send("Work in progress")
-  }
-})
+app.use("/user", registerUser);
+app.use('/user',loginUser);
 
 app.listen(PORT, () => console.log("Server is running /👍"));

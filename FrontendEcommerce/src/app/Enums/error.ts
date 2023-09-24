@@ -1,5 +1,6 @@
 export enum Errors {
     isEmailValid = 'Email is not Valid',
     isRequired = 'Field is required',
-    lengthCheck = 'Password should be between 8 to 14 characters long. '
+    minLength = 'Password should be more then 8  characters long. ',
+    maxLength = 'Password should be less then 14 characters long. '
 }

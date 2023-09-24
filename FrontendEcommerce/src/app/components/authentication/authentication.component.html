@@ -1,9 +1,28 @@
 <div class="authentication-wrapper">
   <div class="container authentication-container">
     <div class="row authentication">
-      <div class="left-side"></div>
+      <div class="left-side">
+        <img src="assets/AuthenticationBackground.jpg" alt="AuthenticationBackground" loading="lazy">
+      </div>
       <div class="right-side">
-        <app-signin></app-signin>
+        <div class="formWrapper">
+          <span class="main-logo"></span>
+          <h3 class="main-title">
+            {{ isSignIn ? "Sign in to your account" : "Create a new account" }}
+          </h3>
+          <p class="main-desc">
+            {{
+              isSignIn ? "Don't have an account ?" : "Already have an account ?"
+            }}
+            <a (click)="isSignIn = !isSignIn">
+              {{ isSignIn ? "Signin now" : "Signup now" }}</a
+            >
+          </p>
+          <app-signin *ngIf="isSignIn; else signUp"></app-signin>
+          <ng-template #signUp>
+            <app-signup></app-signup>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

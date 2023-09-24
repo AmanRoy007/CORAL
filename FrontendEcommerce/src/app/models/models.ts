@@ -31,3 +31,8 @@ export interface productDetails {
 export interface productList {
   result: any[];
 }
+
+
+export interface registerUserResponse{
+  message:string;
+}
