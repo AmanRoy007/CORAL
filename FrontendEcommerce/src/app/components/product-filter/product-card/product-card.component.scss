@@ -1,0 +1,26 @@
+.product-card{
+    max-width: 312px;
+    width: 100%;
+    .product-img{
+        position: relative;
+
+        .product-link{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+    }
+    .product-price-essentials{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .product-category{
+            color: rgba(0, 0, 0, 50%);
+        }
+    }
+
+    
+}

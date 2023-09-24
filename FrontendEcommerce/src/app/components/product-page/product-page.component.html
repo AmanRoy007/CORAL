@@ -1,0 +1,87 @@
+<section class="product-page-section">
+  <div class="container">
+    <ng-container *ngIf="productDetails">
+      <div class="product-features-card">
+        <div class="product-image-gallery">
+          <div class="product-image">
+            <img [src]="productDetails.productImage" alt="" />
+          </div>
+          <div class="product-image-slider"></div>
+        </div>
+        <div class="product-buy-form">
+          <div class="product-title-container">
+            <div>
+              <h3 class="product-title">{{ productDetails.productTitle }}</h3>
+              <span class="product-category">{{
+                productDetails.productCategory
+              }}</span>
+            </div>
+            <div class="product-use-buttons">
+              <button class="like-button">❤️ 109</button>
+              <button class="save-button">Save</button>
+              <button class="share-button">Share</button>
+            </div>
+          </div>
+
+          <div class="product-price-container">
+            <div>
+              <h4 class="product-price">
+                {{
+                  productDetails.productSalePrice
+                    ? productDetails.productSalePrice
+                    : productDetails.productPrice
+                }}
+              </h4>
+              <ng-container *ngIf="productDetails.productSalePrice">
+                <span class="actual-price">{{
+                  productDetails.productPrice
+                }}</span>
+              </ng-container>
+            </div>
+            <div class="product-essentials">
+              <button class="product-rating">⭐ 4.8</button>
+              <button class="review-button">Reviews</button>
+              <p class="recommended-msg">
+                <span class="recommended-count">93%</span> of buyers have
+                recommended this.
+              </p>
+            </div>
+          </div>
+
+          <div class="product-final-button-container">
+            <div class="product-stepper">
+              <button class="minus" (click)="decrementCounter()">-</button>
+              <p class="product-quantity">{{ initialProductCount }}</p>
+              <button class="plus" (click)="incrementCounter()">+</button>
+            </div>
+            <a
+              routerLink="/cart"
+              class="add-to-cart"
+              (click)="handleCartItem()"
+            >
+              Add To Cart
+            </a>
+          </div>
+
+          <div class="extrafeatures-card">
+            <ul class="features-list">
+              <li class="featureslist-item">
+                <p class="feature-title">Free Delivery</p>
+                <p class="features-description">
+                  Enter your Postal code for Delivery Availability
+                </p>
+              </li>
+              <li class="featureslist-item">
+                <p class="feature-title">Return Delivery</p>
+                <p class="features-description">
+                  Free 30 days Delivery Return. Details
+                </p>
+              </li>
+            </ul>
+          </div>
+          <app-product-description></app-product-description>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

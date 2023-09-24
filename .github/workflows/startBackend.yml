@@ -1,0 +1,27 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: echo "node installed succesfully on ${{github.repository}}"
+      - name: dive into backend folder
+        run: | 
+            cd ${{github.workspace}}/BackendEcommerce/
+            npm install
+            npm start 
+      - run: echo "server started"

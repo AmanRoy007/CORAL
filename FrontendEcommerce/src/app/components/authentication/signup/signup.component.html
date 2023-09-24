@@ -1,0 +1,178 @@
+<ng-container>
+  <form [formGroup]="signUpForm" class="login-form" novalidate>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-control">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            name="fname"
+            id="fname"
+            formControlName="firstName"
+          />
+          <div
+            class="control-error-block"
+            *ngIf="
+              signUpForm.get('firstName')?.invalid &&
+              signUpForm.get('firstName')?.touched
+            "
+          >
+            <p
+              [ngClass]="{ error: signUpForm.controls['firstName'].errors }"
+              *ngIf="signUpForm.controls['firstName'].errors?.['required'] && !signUpForm.untouched && signUpForm.controls['firstName'].touched "
+            >
+              {{ formError.isRequired }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-control">
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            name="lname"
+            id="lname"
+            formControlName="lastName"
+          />
+          <div
+            class="control-error-block"
+            *ngIf="
+              signUpForm.get('lastName')?.invalid &&
+              signUpForm.get('lastName')?.touched
+            "
+          >
+            <p
+              [ngClass]="{ error: signUpForm.controls['lastName'].errors }"
+              *ngIf="signUpForm.controls['lastName'].errors?.['required'] && !signUpForm.untouched && signUpForm.controls['lastName'].touched "
+            >
+              {{ formError.isRequired }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['lastName'].errors }"
+              *ngIf="signUpForm.controls['lastName'].errors?.['lastName'] && !signUpForm.untouched && signUpForm.controls['lastName'].touched"
+            >
+              {{ formError.isEmailValid }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-control">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            formControlName="email"
+            autocomplete="email"
+          />
+          <div
+            class="control-error-block"
+            *ngIf="
+              signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+            "
+          >
+            <p
+              [ngClass]="{ error: signUpForm.controls['email'].errors }"
+              *ngIf="signUpForm.controls['email'].errors?.['required'] && !signUpForm.untouched && signUpForm.controls['email'].touched "
+            >
+              {{ formError.isRequired }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['email'].errors }"
+              *ngIf="signUpForm.controls['email'].errors?.['email'] && !signUpForm.untouched && signUpForm.controls['email'].touched"
+            >
+              {{ formError.isEmailValid }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            formControlName="password"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="14"
+          />
+          <div
+            class="control-error-block"
+            *ngIf="
+              signUpForm.get('password')?.invalid &&
+              signUpForm.get('password')?.touched
+            "
+          >
+            <p
+              [ngClass]="{ error: signUpForm.controls['password'].errors }"
+              *ngIf="signUpForm.controls['password'].errors?.['required'] && signUpForm.touched && signUpForm.controls['password'].touched"
+            >
+              {{ formError.isRequired }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['password'].errors }"
+              *ngIf="signUpForm.controls['password'].errors?.['minlength']"
+            >
+              {{ formError.minLength }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['password'].errors }"
+              *ngIf="signUpForm.controls['password'].errors?.['maxlength']"
+            >
+              {{ formError.maxLength }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-control">
+          <label for="confirmpassword">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmpassword"
+            id="confirmpassword"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="14"
+          />
+          <div
+            class="control-error-block"
+            *ngIf="
+              signUpForm.get('confirmPassword')?.invalid &&
+              signUpForm.get('confirmPassword')?.touched
+            "
+          >
+            <p
+              [ngClass]="{ error: signUpForm.controls['confirmPassword'].errors }"
+              *ngIf="signUpForm.controls['confirmPassword'].errors?.['required'] && !signUpForm.untouched && signUpForm.controls['confirmPassword'].touched"
+            >
+              {{ formError.isRequired }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['confirmPassword'].errors }"
+              *ngIf="signUpForm.controls['confirmPassword'].errors?.['minlength']"
+            >
+              {{ formError.minLength }}
+            </p>
+            <p
+              [ngClass]="{ error: signUpForm.controls['confirmPassword'].errors }"
+              *ngIf="signUpForm.controls['confirmPassword'].errors?.['maxlength']"
+            >
+              {{ formError.maxLength }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+   
+    
+  </form>
+  <Button (click)="getUserData()">Sign up </Button>
+</ng-container>

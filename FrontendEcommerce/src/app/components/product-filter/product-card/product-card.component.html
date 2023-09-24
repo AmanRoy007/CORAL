@@ -1,0 +1,15 @@
+<ng-container *ngIf="productDetails">
+  <div class="product-card">
+    <div class="product-img">
+      <img [src]="productDetails.productImage" alt="product-img" />
+      <a [routerLink]="['/productPage',productDetails.productId]" class="product-link"></a>
+    </div>
+
+    <h3 class="product-title">{{ productDetails.productTitle }}</h3>
+    <div class="product-description"></div>
+    <div class="product-price-essentials">
+      <h3 class="product-category">{{ productDetails.productCategory }}</h3>
+      <h4 class="product-price">{{ productDetails.productPrice }}</h4>
+    </div>
+  </div>
+</ng-container>

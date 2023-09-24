@@ -1,0 +1,32 @@
+.login-form {
+  margin-top: 20px;
+  .form-control {
+    margin-bottom: 24px;
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input {
+      padding: 12px;
+      border: 1px solid #b1b1b1;
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}
+button {
+  padding: 12px;
+  display: inline-block;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #1e231e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:active {
+    background-color: rgba(30, 35, 30, 0.9);
+  }
+}
