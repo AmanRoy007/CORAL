@@ -1,16 +1,11 @@
-<section
-  class="product-cart"
-  #productCartDiv
-  [ngClass]="isOpen ? 'active' : ''"
->
+<section class="product-cart container" #productCartDiv>
+  
+  <div
+  class="product-details-container"
+  *ngIf="productDetails.length; else noDataDiv"
+  >
   <div class="cart-product-details">
     <h1 class="main-title">My Products({{ productCount }})</h1>
-    <button class="close-button" (click)="addActiveClass()">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </div>
-
-  <div class="product-details-container" *ngIf="productDetails.length">
     <div class="product-card" *ngFor="let item of productDetails">
       <div class="product-image">
         <img [src]="item.productImage" alt="" />
@@ -23,7 +18,7 @@
           </div>
           <div class="itemList">
             <p>Product Price</p>
-            <p>{{ (item.productPrice) }}</p>
+            <p>{{ item.productPrice }}</p>
           </div>
           <div class="itemList">
             <p>Product Saving</p>
@@ -44,8 +39,16 @@
             <p>{{ item.productPrice }}</p>
           </div>
         </div>
-        <button class="placeOrder">Place Order</button>
       </div>
     </div>
+    <a routerLink="/checkout"  class="placeOrder">Place Order</a>
   </div>
+  </div>
+  <ng-template #noDataDiv>
+
+    <div class="empty-cart-wrapper">
+      <h2>Your cart is empty</h2>
+      <p>Look like you have not added anything to your cart. Go ahead & explore top categories</p>
+    </div>
+  </ng-template>
 </section>

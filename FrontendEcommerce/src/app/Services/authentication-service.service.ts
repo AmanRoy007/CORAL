@@ -1,14 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginFormData, loginResponse, registerFormModel } from '../models/models';
+import {
+  LoginFormData,
+  registerFormModel,
+} from '../models/models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationServiceService {
-  private loginUrl: string = 'http://localhost:5000/login';
-  private registerUrl: string = 'http://localhost:5000/register';
-  public isLoggedInUser:boolean = false;
+  private loginUrl: string = 'http://localhost:5000/user/login';
+  private registerUrl: string = 'http://localhost:5000/user/registerUser';
+  public isLoggedInUser: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -20,13 +24,11 @@ export class AuthenticationServiceService {
     return this.http.post(this.registerUrl, payload);
   }
 
-  SetUserLoggedIn(isUserLoggedIn:boolean)
-  {
+  SetUserLoggedIn(isUserLoggedIn: boolean) {
     this.isLoggedInUser = isUserLoggedIn;
-    
   }
-  
-  getUserLoggedIn():boolean{
+
+  getUserLoggedIn(): boolean {
     return this.isLoggedInUser;
   }
 }

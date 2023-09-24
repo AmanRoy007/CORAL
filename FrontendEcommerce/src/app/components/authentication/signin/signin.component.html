@@ -1,0 +1,72 @@
+<ng-container>
+    <form [formGroup]="loginForm" class="login-form" novalidate>
+      <div class="form-control">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          formControlName="email"
+          autocomplete="email"
+        />
+        <div
+          class="control-error-block"
+          *ngIf="
+            loginForm.invalid && loginForm.touched
+          "
+        >
+          <p
+            [ngClass]="{ error: loginForm.controls['email'].errors }"
+            *ngIf="loginForm.controls['email'].errors?.['required'] && loginForm.touched &&  loginForm.controls['email'].touched "
+          >
+            {{ formError.isRequired }}
+          </p>
+          <p
+            [ngClass]="{ error: loginForm.controls['email'].errors }"
+            *ngIf="loginForm.controls['email'].errors?.['pattern'] && loginForm.touched &&  loginForm.controls['email'].touched"
+          >
+            {{ formError.isEmailValid }}
+          </p>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          autocomplete="current-password"
+          formControlName="password"
+          minlength="8"
+          maxlength="14"
+        />
+        <div
+          class="control-error-block"
+          *ngIf="
+            loginForm.invalid &&  loginForm.touched
+          "
+        >
+          <p
+            [ngClass]="{ error: loginForm.controls['password'].errors }"
+            *ngIf="loginForm.controls['password'].errors?.['required'] && loginForm.touched &&  loginForm.controls['password'].touched"
+          >
+            {{ formError.isRequired }}
+          </p>
+          <p
+            [ngClass]="{ error: loginForm.controls['password'].errors }"
+            *ngIf="loginForm.controls['password'].errors?.['minlength']&& loginForm.touched &&  loginForm.controls['password'].touched"
+          >
+            {{ formError.minLength }}
+          </p>
+          <p
+          [ngClass]="{ error: loginForm.controls['password'].errors }"
+          *ngIf="loginForm.controls['password'].errors?.['maxlength'] && loginForm.touched &&  loginForm.controls['password'].touched"
+        >
+          {{ formError.maxLength }}
+        </p>
+        </div>
+      </div>
+    </form>
+    <Button (click)="getUserData()">Sign in </Button>
+</ng-container>
+
