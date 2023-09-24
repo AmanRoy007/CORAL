@@ -5,16 +5,22 @@ import {
   registerFormModel,
 } from '../models/models';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationServiceService {
-  private loginUrl: string = 'http://localhost:5000/user/login';
-  private registerUrl: string = 'http://localhost:5000/user/registerUser';
+  private loginUrl: string = 'https://coral-yuom.onrender.com/user/login';
+  private registerUrl: string = 'http://coral-yuom.onrender.com/user/registerUser';
   public isLoggedInUser: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if(!environment.production){
+      this.loginUrl = 'http://localhost:5000/user/login';
+      this.registerUrl = 'http://localhost:5000/user/registerUser'
+    }
+  }
 
   handleLogin(payload: LoginFormData) {
     return this.http.post(this.loginUrl, payload);
