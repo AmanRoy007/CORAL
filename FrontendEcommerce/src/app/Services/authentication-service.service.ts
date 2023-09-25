@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticationServiceService {
   private loginUrl: string = 'https://coral-yuom.onrender.com/user/login';
-  private registerUrl: string = 'http://coral-yuom.onrender.com/user/registerUser';
+  private registerUrl: string = 'https://coral-yuom.onrender.com/user/registerUser';
   public isLoggedInUser: boolean = false;
 
   constructor(private http: HttpClient) {
