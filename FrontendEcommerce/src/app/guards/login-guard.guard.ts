@@ -12,7 +12,7 @@ export class LoginGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {        
-    return this.authenticated_Service.getUserLoggedIn();
+    return true;
       
   }
   

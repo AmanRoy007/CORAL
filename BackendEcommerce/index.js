@@ -4,13 +4,14 @@ import productsList from "./allProducts.js";
 import registerUser from "./Autthentication/authentication.js";
 import cors from 'cors';
 import loginUser from "./Autthentication/loginUser.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json(),cors({
   origin:'*'
-}));
+}), cookieParser());
 
 const PORT = 5000;
 

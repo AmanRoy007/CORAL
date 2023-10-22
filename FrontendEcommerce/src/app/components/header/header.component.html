@@ -5,16 +5,28 @@
 
     <div class="menu-link">
       <ul class="menu-link-list">
-        <li class="menu-link-list-item">
+        <li class="menu-link-list-item" [ngStyle]="{display : !isLogin ? 'block' : 'none'}" >
           <a routerLink="login"
             ><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Account</a
           >
         </li>
+       
         <li class="menu-link-list-item">
           <a routerLink="cart/"
-            ><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;Shoping</a
+            ><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;Cart</a
           >
         </li>
+        <li class="menu-link-list-item" [ngStyle]="{display : isLogin ? 'block' : 'none'}">
+          <span class="user-profile">{{userName}}</span>
+          <ul class="profile-dropdownList">
+            <li class="profile-dropdownListItem">
+              <a><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Profile</a>
+            </li>
+            <li class="profile-dropdownListItem">
+              <a><i class="fa-solid fa-power-off"></i>&nbsp;&nbsp;logout</a>
+            </li>
+          </ul>
+      </li>
       </ul>
     </div>
   </div>

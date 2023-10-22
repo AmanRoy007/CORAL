@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormControlsModule } from './components/FormControls/form-controls.module';
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AuthenticationComponent,
     SigninComponent,
     SignupComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,

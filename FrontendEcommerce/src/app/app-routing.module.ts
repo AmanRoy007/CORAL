@@ -16,25 +16,16 @@ const routes: Routes = [
     // canActivate: [LoginGuardGuard]
   },
   {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('./components/Admin/admin-dashboard/admin-dashboard.module').then(
-        (module) => module.AdminDashboardModule
-      ),
-
-    // canActivate: [LoginGuardGuard]
-  },
-  {
     path: 'checkout',
-    loadComponent:()=>import('./components/checkout-page/checkout-page.component').then((module)=>module.CheckoutPageComponent)
+    component:CheckoutPageComponent
   },
   {
-    component: ProductCartComponent,
     path: 'cart',
+    component: ProductCartComponent,
   },
   {
-    component: AuthenticationComponent,
     path: 'login',
+    component: AuthenticationComponent,
   },
 ];
 
