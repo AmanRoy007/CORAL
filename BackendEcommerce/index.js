@@ -2,7 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import productsList from "./allProducts.js";
 import registerUser from "./Autthentication/authentication.js";
-import cors from 'cors';
+import cors from "cors";
 import loginUser from "./Autthentication/loginUser.js";
 import cookieParser from "cookie-parser";
 import paymentGateway from "./Payment/payment.js";
@@ -10,9 +10,13 @@ import paymentGateway from "./Payment/payment.js";
 dotenv.config();
 const app = express();
 
-app.use(express.json(),cors({
-  origin:'*'
-}), cookieParser());
+app.use(
+  express.json(),
+  cors({
+    origin: "*",
+  }),
+  cookieParser()
+);
 
 const PORT = 5000;
 
@@ -41,8 +45,8 @@ app.get("/products", function (req, res) {
 });
 
 app.use("/user", registerUser);
-app.use('/user',loginUser);
+app.use("/user", loginUser);
 
-app.use('/payment', paymentGateway)
+app.use("/payment", paymentGateway);
 
 app.listen(PORT, () => console.log("Server is running /👍"));
