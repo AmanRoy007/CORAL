@@ -1,4 +1,4 @@
-const productsList = [
+export const productsList = [
   {
     productId: "01_001",
     productTitle: "Adicolor Classics Joggers",
@@ -66,7 +66,7 @@ const productsList = [
     isBestSeller: true,
   },
   {
-    productId: "01_006",
+    productId: "01_008",
     productTitle: "Nike Sportswear Futura Luxe",
     productImage: "assets/01_008.jpg",
     productCategory: "Glasses",

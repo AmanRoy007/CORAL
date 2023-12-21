@@ -7,6 +7,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { HomeModule } from '../../home/home.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCheckboxModule,
     MatGridListModule,
     MatSliderModule,
-    ProductCategoriesRoutingModule
+    ProductCategoriesRoutingModule,
+    HomeModule
   ]
 })
 export class ProductCategoriesModule { }
