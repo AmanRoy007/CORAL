@@ -4,7 +4,7 @@ import { GetAllProductService } from 'src/app/Services/get-all-product.service';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { MatDialogRef } from '@angular/material/dialog';
 
-export interface PeriodicElement {
+export interface productData {
   productId: string;
   productTitle: string;
   productImage: string;
@@ -14,7 +14,7 @@ export interface PeriodicElement {
   isBestSeller: boolean;
 }
 
-let ELEMENT_DATA: PeriodicElement[] | any = [
+let ELEMENT_DATA: productData[] | any = [
   {
     productId: '01_001',
     productTitle: 'Adicolor Classics Joggers',
@@ -38,12 +38,13 @@ export class ProductsComponent implements OnInit {
     'productImage',
     'productCategory',
     'productPrice',
+    'dots',
   ];
   dataSource = ELEMENT_DATA;
 
   constructor(
     private productService: GetAllProductService,
-    private dialogeService: DiaglogService,
+    private dialogeService: DiaglogService
   ) {}
 
   ngOnInit(): void {
@@ -60,14 +61,12 @@ export class ProductsComponent implements OnInit {
 
   openFormDialogue() {
     const formDialogeRef = this.dialogeService.openDialog(AddProductComponent, {
-      'width':'1000px'
+      width: '1000px',
     });
 
     formDialogeRef.afterClosed().subscribe({
-      next:(data)=>{
-        console.log(data);
-      }
-    })
-
+      next: (data) => {
+      },
+    });
   }
 }

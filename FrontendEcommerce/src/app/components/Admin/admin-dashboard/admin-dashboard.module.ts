@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [AdminDashboardComponent, ProductsComponent, AddProductComponent],
   imports: [
@@ -21,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,  
     MatDialogModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class AdminDashboardModule { }

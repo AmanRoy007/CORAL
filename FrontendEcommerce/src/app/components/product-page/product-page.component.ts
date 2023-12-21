@@ -50,20 +50,16 @@ export class ProductPageComponent implements OnInit {
           (item: any) => item.productId === this.productId
         )[0];
       },
-      error: (error) => {
-        console.log(error);
-      },
+      error: (error) => {},
     });
   }
 
   handleCartItem() {
-    
     let productObject = {
       productId: this.productDetails?.productId,
       productName: this.productDetails?.productTitle,
       quanitity: this.initialProductCount,
-      productPrice:
-        (this.productDetails?.productPrice!),
+      productPrice: this.productDetails?.productPrice!,
       productImage: this.productDetails?.productImage,
     };
     this.cartService.setProductToCart(productObject);

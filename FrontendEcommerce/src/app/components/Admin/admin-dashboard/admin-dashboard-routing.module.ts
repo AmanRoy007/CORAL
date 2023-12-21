@@ -10,7 +10,8 @@ const routes: Routes = [
     children:[
       {
         path:'products',
-        component:ProductsComponent
+        component:ProductsComponent,
+        pathMatch:'prefix'
       }
     ]
   }

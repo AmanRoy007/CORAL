@@ -1,12 +1,11 @@
 .main-header {
-  .main-header-container {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #d9d9d9;
+  .container {
 
+    .first-header{
+      display: flex;
+      align-items: center;justify-content: space-between;
+      border-bottom: 1px solid #cbcbcb;
+    }
     .main-logo {
       display: flex;
       font-size: 28px;
@@ -32,8 +31,6 @@
         .menu-link-list-item {
           font-size: 18px;
           position: relative;
-          padding:  24px 20px;
-
           .user-profile {
             display: inline-flex;
             justify-content: center;
@@ -52,7 +49,7 @@
             display: none;
             width: 150;
             width: 150px;
-            bottom: -100%;
+            top: 100%;
             right: 0;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             z-index: 999;
@@ -82,16 +79,21 @@
           a {
             color: #000;
             text-decoration: none;
+            padding: 24px 20px;
+            display: inline-block;
           }
         }
+      }
+      .mobile-menu {
+        all: unset;
+        font-size: 24px;
+        padding: 14px;
+        display: none;
       }
     }
   }
 
-  .link-header-container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 30px 0;
+  .container {
     .menu-link-list {
       display: flex;
       justify-content: space-between;
@@ -103,6 +105,8 @@
           color: #000;
           font-size: 16px;
           text-decoration: none;
+          padding: 24px 0;
+          display: inline-block;
         }
       }
     }

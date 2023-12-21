@@ -63,8 +63,6 @@ export class SignupComponent implements OnInit {
 
       },
       error: (error) => {
-        console.log(error);
-
         if (error instanceof HttpErrorResponse) {
           this.snackBarService.autoHideSnackBar(error.error.message,'errorSnackBar');
         }

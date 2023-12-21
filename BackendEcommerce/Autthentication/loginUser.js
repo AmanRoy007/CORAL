@@ -46,8 +46,9 @@ loginUser.get("/cookies", (req, res) => {
       `${userInfo[0].firstName}${userInfo[0].lastName}`,
       {
         expires: new Date(Date.now() + 900000),
-        secure: true,
+        secure: false,
         sameSite: false,
+        httpOnly:true
       }
     )
     .send();

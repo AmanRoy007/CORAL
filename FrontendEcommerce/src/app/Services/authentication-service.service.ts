@@ -12,7 +12,7 @@ export class AuthenticationServiceService {
   private registerUrl: string =
     'https://coral-yuom.onrender.com/user/registerUser';
   private cookieUrl: string = 'https:////coral-yuom.onrender.com/user/cookies';
-  public isLoggedInUser = new BehaviorSubject<string|null|undefined>(null);
+  public isLoggedInUser = new BehaviorSubject<string | null | undefined>(null);
 
   constructor(private http: HttpClient) {
     if (!environment.production) {

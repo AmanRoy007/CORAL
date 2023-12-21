@@ -26,7 +26,8 @@
       }
 
       .order-summary {
-        flex: 0 0 50%;
+        flex: 0 0 80%;
+        max-width: 80%;
         padding: 0 20px;
         .box {
           padding: 30px 0;
@@ -60,6 +61,7 @@
       font-weight: 500;
       margin: 30px 0 30px auto;
       display: block;
+      cursor: pointer;
     }
   }
 

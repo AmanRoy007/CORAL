@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CartServiceService {
   cartProductDetails = new BehaviorSubject<any>('');
 
-   productArray:any[]= [];
+  productArray: any[] = [];
   constructor() {}
 
   setProductToCart(productObject: any) {
@@ -16,8 +16,7 @@ export class CartServiceService {
     this.cartProductDetails.next(this.productArray);
   }
 
-
-  getProductFromSubject(){
+  getProductFromSubject() {
     return this.cartProductDetails.asObservable();
   }
 }
