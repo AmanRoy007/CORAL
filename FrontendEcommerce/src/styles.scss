@@ -16,13 +16,16 @@ router-outlet + * {
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 img {
   height: 100%;
@@ -70,6 +73,11 @@ a {
   max-width: 100%;
 }
 
+.col-8{
+  flex: 0 0 66.66%;
+  max-width: 66.66%;
+}
+
 .col-4 {
   flex: 0 0 33.33%;
   max-width: 33.33%;
@@ -83,4 +91,8 @@ a {
 .successSnackBar{
   background-color: #28a745;
   color: #fff;
+}
+
+button{
+  cursor: pointer !important;
 }

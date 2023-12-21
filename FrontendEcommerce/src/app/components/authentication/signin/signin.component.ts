@@ -24,7 +24,10 @@ export class SigninComponent implements OnInit {
 
   public formError = Errors;
 
-  constructor(private authService: AuthenticationServiceService, private router:Router) {}
+  constructor(
+    private authService: AuthenticationServiceService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -60,14 +63,20 @@ export class SigninComponent implements OnInit {
 
   private loginUser(payload: LoginFormData) {
     this.authService.handleLogin(payload).subscribe({
-      next: (success) => {
-        if(success)
-        {
+      next: (success: any) => {
+        if (success) {
+          let userName =
+            success.result.split(' ')[0].charAt(0) +
+            success.result.split(' ')[1].charAt(0);
+          this.authService.SetUserLoggedIn(userName);
+          this.authService.getLoginCookie().subscribe({
+            next:(cookie)=>{
+            }
+          });
           this.router.navigateByUrl('/');
         }
       },
       error: (error) => {
-        console.log(error);
       },
     });
   }

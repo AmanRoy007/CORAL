@@ -20,6 +20,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormControlsModule } from './components/FormControls/form-controls.module';
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
+import { MobileHeaderComponent } from './components/header/mobile-header/mobile-header.component';
+import { ManageDistributorAvailableComponent } from './components/manage-distributor-available/manage-distributor-available.component';
+import { ManageDistributorAvailableDialogeComponent } from './components/manage-distributor-available-dialoge/manage-distributor-available-dialoge.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {
+  ScrollingModule,
+} from '@angular/cdk/scrolling';
+import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import {
+  MatDrawerContainer,
+  MatSidenavModule,
+} from '@angular/material/sidenav';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +45,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AuthenticationComponent,
     SigninComponent,
     SignupComponent,
+    CheckoutPageComponent,
+    MobileHeaderComponent,
+    ManageDistributorAvailableComponent,
+    ManageDistributorAvailableDialogeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +63,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     FormControlsModule,
     MatSnackBarModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatMenuModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    ScrollingModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

@@ -9,6 +9,8 @@ import { CartServiceService } from 'src/app/Services/cart-service.service';
 export class ProductCartComponent implements OnInit {
   productCount: number = 0;
 
+  dataSource: any[] = [];
+
   isOpen!: boolean;
 
   productDetails!: any[];
@@ -18,12 +20,9 @@ export class ProductCartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getProductFromSubject().subscribe({
       next: (success) => {
-        console.log(success)
         this.productCount = success.length;
         this.productDetails = success;
       },
     });
   }
-
-  
 }

@@ -1,0 +1,78 @@
+<div class="mat-dialog-heading">
+  <h1 mat-dialog-title>Dialoge</h1>
+</div>
+
+<mat-dialog-content>
+  <div class="mat-dialog-content">
+    <div class="title-sec">
+      <h5>Edit Distributor Settings</h5>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput required value="INGRAM MICRO - MASTER" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Value</mat-label>
+          <input matInput readonly value="0010m00000FxnCZAAZ" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="title-sec">
+      <h5>Choose Partners</h5>
+    </div>
+    <div class="territory-slct-wrp">
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field class="example-chip-list example-full-width">
+            <mat-label
+              >Available Partners<span class="required"> *</span></mat-label
+            >
+            <mat-chip-list #chipList aria-label="Territories selection">
+              <mat-chip
+                *ngFor="let list of territories"
+                (removed)="remove(list)"
+              >
+                {{ list }}
+                <button matChipRemove class="chip-cancel-btn">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input
+                placeholder="Choose Partners..."
+                #listInput
+                [formControl]="listCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"
+              />
+            </mat-chip-list>
+            <mat-autocomplete
+              #auto="matAutocomplete"
+              (optionSelected)="selectTerritories($event)"
+            >
+              <mat-option
+                *ngFor="let fruit of filteredTerritories | async"
+                [value]="fruit"
+              >
+                {{ fruit }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-raised-button color="primary">Save</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -12,6 +12,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ProductCartComponent } from '../product-cart/product-cart.component';
 import { ProductDescriptionComponent } from '../product-description/product-description.component';
 import { CheckoutPageComponent } from '../checkout-page/checkout-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -28,6 +30,9 @@ import { CheckoutPageComponent } from '../checkout-page/checkout-page.component'
     MatMenuModule,
     MatIconModule,
     MatTabsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatTableModule
   ],
   exports:[
     ProductFilterComponent,

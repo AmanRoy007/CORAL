@@ -20,8 +20,6 @@ export async function buildConnection() {
   return isConnected;
 }
 
-
-
 // (async function  insertProductData() {
 
 //   try {
@@ -45,7 +43,6 @@ export async function buildConnection() {
 //   }
 // }
 
-export function readQuery(dbName,collectionName,query)
-{
-  return  mongodb.db(dbName).collection(collectionName).find(query).toArray();
+export function readQuery(dbName, collectionName, query) {
+  return mongodb.db(dbName).collection(collectionName).find(query).toArray();
 }

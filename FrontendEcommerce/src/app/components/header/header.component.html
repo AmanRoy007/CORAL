@@ -1,46 +1,73 @@
-<header class="main-header">
-  <div class="main-header-container">
-    <mat-icon>search</mat-icon>
-    <a routerLink="/"><span class="main-logo">CORAL</span></a>
-
-    <div class="menu-link">
-      <ul class="menu-link-list">
-        <li class="menu-link-list-item">
-          <a routerLink="login"
-            ><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Account</a
-          >
-        </li>
-        <li class="menu-link-list-item">
-          <a routerLink="cart/"
-            ><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;Shoping</a
-          >
-        </li>
-      </ul>
+<ng-container >
+  <header class="main-header">
+    <div class="container">
+      <div class="first-header">
+        <mat-icon>search</mat-icon>
+        <a routerLink="/"><span class="main-logo">CORAL</span></a>
+  
+        <div class="menu-link">
+          <ul class="menu-link-list">
+            <li
+              class="menu-link-list-item"
+              [ngStyle]="{ display: !isLogin ? 'block' : 'none' }"
+            >
+              <a routerLink="login"
+                ><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Account</a
+              >
+            </li>
+  
+            <li class="menu-link-list-item">
+              <a routerLink="cart/"
+                ><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;Cart</a
+              >
+            </li>
+            <li
+              class="menu-link-list-item"
+              [ngStyle]="{ display: isLogin ? 'block' : 'none' }"
+            >
+              <span class="user-profile">{{ userName }}</span>
+              <ul class="profile-dropdownList">
+                <li class="profile-dropdownListItem">
+                  <a><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Profile</a>
+                </li>
+                <li class="profile-dropdownListItem">
+                  <a><i class="fa-solid fa-power-off"></i>&nbsp;&nbsp;logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <button class="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="link-header-container">
-    <ul class="menu-link-list">
-      <li class="menu-link-item">
-        <a routerLink="category/Jewelry">Jewelry & Accessories</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/clothes">Clothing & Shoes</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/home">Home & Living</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/wedding">Wedding & Party</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/toys">Toys & Entertainment</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/art">Art & Collectibles</a>
-      </li>
-      <li class="menu-link-item">
-        <a routerLink="category/craft">Craft Supplies & Tools</a>
-      </li>
-    </ul>
-  </div>
-</header>
+    <div class="container">
+      <div class="second-header">
+        <ul class="menu-link-list">
+          <li class="menu-link-item">
+            <a routerLink="category/Jewelry">Jewelry & Accessories</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/clothes">Clothing & Shoes</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/home">Home & Living</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/wedding">Wedding & Party</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/toys">Toys & Entertainment</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/art">Art & Collectibles</a>
+          </li>
+          <li class="menu-link-item">
+            <a routerLink="category/craft">Craft Supplies & Tools</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</ng-container>

@@ -22,13 +22,10 @@ registerUser.post("/registerUser", (request, response) => {
     buildConnection().then(async (isConnected) => {
       if (isConnected) {
         let duplicateEntry = await dataBase.find({ email: email }).toArray();
-        console.log(duplicateEntry);
         if (duplicateEntry.length) {
-          response
-            .status(409)
-            .send({
-              message: "User already extsts, Please log in to continue.",
-            });
+          response.status(409).send({
+            message: "User already extsts, Please log in to continue.",
+          });
         } else {
           mongodb
             .db("CORAL_Ecommerce")
@@ -47,6 +44,4 @@ registerUser.post("/registerUser", (request, response) => {
   }
 });
 
-
 export default registerUser;
-
