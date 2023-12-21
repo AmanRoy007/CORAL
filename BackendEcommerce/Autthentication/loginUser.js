@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import * as bcrypt from "bcryptjs";
+import * as bcrypt from 'bcryptjs';
 
 import { buildConnection } from "../connectionDB.js";
 import { MongoClient, ServerApiVersion } from "mongodb";
