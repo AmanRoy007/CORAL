@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt/bcrypt.js";
 
 export default async function encryptPassword(argumentPassword) {
   let saltRounds = 10;
