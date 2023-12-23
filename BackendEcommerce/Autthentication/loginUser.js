@@ -1,10 +1,9 @@
 import express, { response } from "express";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import { buildConnection } from "../connectionDB.js";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 
 const connectionUrl = process.env.CONNECTIONSTRING;
 
