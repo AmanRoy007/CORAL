@@ -15,7 +15,7 @@ export class CheckoutService {
     @Inject(DOCUMENT) readonly document: Document
   ) {
     if (environment.production) {
-      this.checkoutUrl = 'https://coralbackend.onrender.com/products/payment/checkout';
+      this.checkoutUrl = 'https://coralbackend.onrender.com/payment/checkout';
     }
   }
 
