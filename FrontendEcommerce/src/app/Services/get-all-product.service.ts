@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class GetAllProductService {
 
 
-  private productUrl:string = 'https://coral-yuom.onrender.com/products';
+  private productUrl:string = 'https://coralbackend.onrender.com/products';
   constructor(private http:HttpClient) { 
     if(!environment.production){
       this.productUrl = 'http://localhost:5000/products'

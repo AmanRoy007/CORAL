@@ -8,14 +8,14 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CheckoutService {
-  private readonly checkoutUrl = 'http://localhost:5000/payment/checkout';
+  private checkoutUrl = 'http://localhost:5000/payment/checkout';
 
   constructor(
     private httpClient: HttpClient,
     @Inject(DOCUMENT) readonly document: Document
   ) {
     if (environment.production) {
-      this.checkoutUrl = 'http://localhost:5000/payment/checkout';
+      this.checkoutUrl = 'https://coralbackend.onrender.com/products/payment/checkout';
     }
   }
 
